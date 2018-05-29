@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
 import stock_simulator.models.Company;
+import stock_simulator.models.Game;
 import stock_simulator.services.BankService;
 import stock_simulator.services.CompanyService;
+import stock_simulator.services.GameService;
 
 @RestController
 public class restController {
 
 	@Autowired
-	private CompanyService companyService;
+	private GameService GameService;
 	private int client_count=0;
 	
 	@GetMapping(value="/")
@@ -28,8 +30,8 @@ public class restController {
 	}
 	
 	@GetMapping("/findall")
-	public Collection<Company> getAllBanks(){
-		return companyService.findAllCompanies();
+	public Collection<Game> getAll(){
+		return GameService.findAllGames();
 	}
 	
 	
