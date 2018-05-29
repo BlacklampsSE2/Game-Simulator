@@ -8,13 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
+import stock_simulator.models.Company;
 import stock_simulator.services.BankService;
+import stock_simulator.services.CompanyService;
 
 @RestController
 public class restController {
 
 	@Autowired
-	private BankService bankService;
+	private CompanyService companyService;
 	private int client_count=0;
 	
 	@GetMapping(value="/")
@@ -25,13 +27,10 @@ public class restController {
 		return "Hello";
 	}
 	
-	@GetMapping("/findallbanks")
-	public Collection<Bank>getAllBanks(){
-		return bankService.findAllBanks();
+	@GetMapping("/findall")
+	public Collection<Company> getAllBanks(){
+		return companyService.findAllCompanies();
 	}
 	
-	@GetMapping("/del")
-	public void delete(@RequestParam int id) {
-		bankService.delete(id);
-	}
+	
 }
