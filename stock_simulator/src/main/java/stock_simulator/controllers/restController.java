@@ -19,7 +19,7 @@ public class restController {
 
 	@Autowired
 	private GameService GameService;
-	private int client_count=0;
+	private int client_count=1;
 	
 	@GetMapping(value="/")
 	public String hello()
@@ -29,7 +29,7 @@ public class restController {
 		return "Hello";
 	}
 	
-	@GetMapping("/findall")
+	@GetMapping("/ffindall")
 	public Collection<Game> getAll(){
 		return GameService.findAllGames();
 	}
