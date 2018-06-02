@@ -42,7 +42,8 @@
 					<input type="hidden" class="form-control" value="${bank.id}"
 						name="id" id="id">
 					<div class="form-group">
-						<label for="bankName">Bank Name:</label> <input type="text"
+						<label for="bankName">Bank Name:</label> 
+						<input type="text"
 							class="form-control" value="${bank.name}" name="name"
 							id="bankName">
 					</div>
