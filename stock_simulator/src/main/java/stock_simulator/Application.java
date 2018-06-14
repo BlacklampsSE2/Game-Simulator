@@ -11,43 +11,91 @@ public class Application {
 	public static void main(String[] args) {
 		// SpringApplication.run(Application.class, args);
 
-		int[] RTT = new int[20];
-		Random prob = new Random();
+		int[] ETT = new int[20];
 		Random rand = new Random();
+		 int t= 0;
+		double Sector_length = 0.33;
+		double Stock_length = 0.67;
+		// rand.nextInt(50) + 1;
 
-		RTT[0] = rand.nextInt(3 + 1 + 3) - 3;
+		// ini evet details
 
-		for (int i = 1; i < (RTT.length); i++) {
-			for (int r = 1; r <= 100; r++) {
-				double z = prob.nextDouble();
+		//
+		// for (int i = 0; i < ETT.length; i++) {
+		// int a = rand.nextInt(4) + 1;// Number 0-1
+		// if (a == 1) {
+		//
+		// }
+		// }
+	/*	 for (int i = 0; i < 20; i++) {
+		  t=rand.nextInt(1 + 1 + 0) + 0; //2-5 turns
+		 System.out.println("Turns : "+t);}*/
+		 
+		 
+		 System.out.println("----------------------------");
+		for (int i = 0; i < ETT.length; i++) {
+			System.out.println("i--------- : " + i);
+			int a = rand.nextInt(1 + 1 + 0) + 0;// Number 0-1
+			System.out.println(a);
+			if (a == 1) {
+				for (int k = 1; k <= 100; k++) {
+					double z = rand.nextDouble();
+					if (0 < z && z < Sector_length) {
+						// Sector Event
+						int turns = rand.nextInt(4) + 2; // 2-5 turns
+						if ((i + turns) < ETT.length) {
+							for (int count = 0; count < turns; count++) {
+								if (i < ETT.length) {
+									for (int sek = 1; sek <= 100; sek++) {
+										double l = rand.nextDouble();
+										if (0 < l && l < 0.5) {
+											ETT[i] = rand.nextInt(4) + 1; // 1-5 val
+										} else if (0.5 < l && z < 1.0) {
+											ETT[i] = rand.nextInt(-1 + 1 + 5) - 5; // -1 to -5
+										}
+									}
+									 //ETT[i] = turns;
+									i++;
+								}
+							}
 
-				if (0 < z && z < 0.25) {
-					// Increases
-					if ((RTT[i - 1] + 1) >= 3) {
-						RTT[i] = RTT[i - 1];
-					} else {
-						RTT[i] = RTT[i - 1] + 1;
+						}
+					} else if (Sector_length < z && z < 1.0) {
+						// Sector Event
+						int turns =rand.nextInt(7 + 1 + 1) + 1;// Number 1-7
+						if ((i + turns) < ETT.length) {
+							for (int count = 0; count < turns; count++) {
+								if (i < ETT.length) {
+									for (int stk = 1; stk <= 100; stk++) {
+										double l = rand.nextDouble();
+										if (0 < l && l < 0.5) {
+											ETT[i] = rand.nextInt(3 + 1 + 2) + 2;// Number 2-3
+										} else if (0.5 < l && z < 0.25) {
+											ETT[i] = rand.nextInt(-1 + 1 + 5) - 5; // -1 to -5
+										}
+										else if(0.25<l&&z<1.0)
+										{
+											ETT[i] = rand.nextInt(-3 + 1 + 6) - 6; // -3 to -6
+										}
+									}
+									 //ETT[i] = turns;
+									i++;
+								}
+							}
+
+						}
 					}
-				} else if (0.25 < z && z < 0.50) {
-					// Decreases
-					if ((RTT[i - 1] - 1) < -3) {
-						RTT[i] = RTT[i - 1];
-					} else {
-						RTT[i] = RTT[i - 1] - 1;
-					}
-				} else if (0.50 < z && z < 1.0) {
-					RTT[i] = RTT[i - 1];
 				}
+
+			} else {
+
 			}
-
-		}
-		
-		System.out.println("");
-		System.out.println("*********************");
-		for (int j = 0; j < RTT.length; j++) {
-			System.out.println(j + " : " + RTT[j]);
+			// System.out.println(a);
 		}
 
+		for (int j = 0; j < ETT.length; j++) {
+			System.out.println(j + " : " + ETT[j]);
+		}
 	}
 
 }
