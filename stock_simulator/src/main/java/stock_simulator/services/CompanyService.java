@@ -18,6 +18,14 @@ public class CompanyService {
 	int[] RT = company_Obj.RT;
 	int[] MT=company_Obj.MT;
 	int[]ST=company_Obj.ST;
+	int[] ET = company_Obj.ET;
+	String []Evenets=company_Obj.Evenets;
+	
+
+	double Sector_length = 0.33;
+	double Stock_length = 0.67;
+	
+	
 	@Autowired
 	private CompanyRepository companyRepository;
 
@@ -115,6 +123,82 @@ public class CompanyService {
 	}
 
 	public void EventTrend() {
+		Random rand = new Random();
+		for (int i = 0; i < ET.length; i++) {
+			;
+			int a = rand.nextInt(1 + 1 + 0) + 0;// Number 0-1
+			if (a == 1) {
+				for (int k = 1; k <= 100; k++) {
+					double z = rand.nextDouble();
+					if (0 < z && z < Sector_length) {
+						// Sector Event
+
+						int turns = rand.nextInt(4) + 2; // 2-5 turns done
+						if ((i + turns) < ET.length) {
+
+							int valu = rand.nextInt(1 + 1 + 0) + 0;// setlect BOOM or BUST
+							int val2 = 0;
+							String Eve;
+							if (valu == 0)// BOOM
+							{
+								val2 = rand.nextInt(5) + 1; // 1-5 val corrected
+								Eve = "BOOM";
+							} else// BUST
+							{
+								val2 = rand.nextInt(5) + 1; // 1-5 val corrected
+								Eve = "BUST";
+							}
+
+							for (int count = 0; count < turns; count++) {
+								if (i < ET.length) {
+									ET[i] = val2;
+									Evenets[i] = Eve;
+									i++;
+								}
+							}
+
+						}
+						Sector_length = Sector_length - 1.0; // Sector prob down
+					} else if (Sector_length < z && z < 1.0) {
+						// Stock Event
+						int turns = rand.nextInt(7) + 1;// Number 1-7 corrected
+						if ((i + turns) < ET.length) {
+							int valu1 = rand.nextInt(1 + 1 + 0) + 0;
+							int valu2;
+							String Eve;
+							if (valu1 == 1) {
+								valu2 = rand.nextInt(2) + 2;// Number 2-3 corrected
+								Eve = "PROFIT_WARNING";
+							} else {
+								int value = rand.nextInt(1 + 1 + 0) + 0;
+								if (value == 1)// TAKE_OVER
+								{
+									valu2 = rand.nextInt(-1 + 1 + 5) - 5; // -1 to -5 done
+									Eve = "TAKE_OVER";
+								} else// SCANDAL
+								{
+									valu2 = rand.nextInt(-3 + 1 + 6) - 6; // -3 to -6 done
+									Eve = "SCANDAL";
+								}
+							}
+							for (int count = 0; count < turns; count++) {
+								if (i < ET.length) {
+									ET[i] = valu2;
+									Evenets[i] = Eve;
+									i++;
+								}
+							}
+
+						}
+						Sector_length = Sector_length + 1.0; // Sector prob up (Stock prob down)
+					}
+				}
+
+			} else {
+
+			}
+			// System.out.println(a);
+		}
 
 	}
 }
