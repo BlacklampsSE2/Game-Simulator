@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Query;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +39,7 @@ public class PlayerService {
 	{
 		playerRepository.save(player);
 	}
-	public boolean validateUser(String name,String password) 
+	public static boolean validateUser(String name,String password) 
 	{
 		String query="Select * from Player where Player_Name=name, Password=password";
 		
