@@ -85,7 +85,7 @@
                             <a class="nav-link" href="#leadershipboard">Leadershipboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#Portfolio">Portfolio</a>
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
                         </li>
 						 <li class="nav-item">
                             <a class="nav-link" href="#markethistory">Market History</a>
@@ -315,14 +315,11 @@
 					  </tr>
 					</thead>
 					<tbody>
-					<c:forEach var="user" items="${userList}"> 
-					 <tr>
-						
-						<td><c:out value="${user.firstName}" /></td>
-						<td><c:out value="${user.lastName}" /></td>
-						<td><c:out value="${user.email}" /></td>
+					  <tr>
+						<td>John</td>
+						<td>Doe</td>
+						<td>john@example.com</td>
 					  </tr>
-					</c:forEach>  
 					  <tr>
 						<td>Mary</td>
 						<td>Moe</td>
@@ -400,15 +397,12 @@
 					  </tr>
 					</thead>
 					<tbody>
-					<c:forEach var="company" items="${companyList}">
 					  <tr>
-						<td><c:out value="${company.firstName}"/></td>
-						<td><c:out value="${company.Stock_Starting_Price}/></td>
-						
+						<td>John</td>
+						<td>Doe</td>
+						<td>john@example.com</td>
 					  </tr>
-					</c:forEach>  
-					 <tr>
-					  
+					  <tr>
 						<td>Mary</td>
 						<td>Moe</td>
 						<td>mary@example.com</td>
