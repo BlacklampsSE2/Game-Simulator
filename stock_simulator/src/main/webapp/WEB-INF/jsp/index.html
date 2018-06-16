@@ -314,11 +314,14 @@
 					  </tr>
 					</thead>
 					<tbody>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
+					<c:forEach var="user" items="${userList}"> 
+					 <tr>
+						
+						<td><c:out value="${user.firstName}" /></td>
+						<td><c:out value="${user.lastName}" /></td>
+						<td><c:out value="${user.email}" /></td>
 					  </tr>
+					</c:forEach>  
 					  <tr>
 						<td>Mary</td>
 						<td>Moe</td>
@@ -396,12 +399,15 @@
 					  </tr>
 					</thead>
 					<tbody>
+					<c:forEach var="company" items="${companyList}">
 					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
+						<td><c:out value="${company.firstName}"/></td>
+						<td><c:out value="${company.Stock_Starting_Price}/></td>
+						
 					  </tr>
-					  <tr>
+					</c:forEach>  
+					 <tr>
+					  
 						<td>Mary</td>
 						<td>Moe</td>
 						<td>mary@example.com</td>
