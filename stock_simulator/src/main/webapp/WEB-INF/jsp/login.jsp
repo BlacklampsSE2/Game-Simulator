@@ -110,6 +110,7 @@
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you login credentials</p>
                     <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
+
 					<form action="/login-user" method="POST">
 					<div class="form-group">
 					<label for="usr">Name:</label>
