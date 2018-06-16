@@ -41,7 +41,7 @@ public class PlayerService {
 	}
 	public static boolean validateUser(String name,String password) 
 	{
-		String query="Select * from Player where Player_Name=name, Password=password";
+		//String query="Select * from Player where Player_Name=name, Password=password";
 		
 		return true;
 	}
