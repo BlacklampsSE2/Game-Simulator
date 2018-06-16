@@ -42,9 +42,8 @@ public class PlayerService {
 		playerRepository.save(player);
 	}
 	
-	
-	public Player findByPlayer_NameAndPassword(String player_Name,String password)
+	public Player findByUsernameAndPassword(String username,String password)
 	{
-		return playerRepository.findByPlayer_NameAndPassword(player_Name, password);
+		return playerRepository.findByUsernameAndPassword(username, password);
 	}
 }

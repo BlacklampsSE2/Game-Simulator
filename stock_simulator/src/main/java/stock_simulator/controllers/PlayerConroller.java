@@ -46,29 +46,28 @@ public class PlayerConroller {
 	return "index";
 	}
 	
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String login(HttpServletRequest request)
 	{
 		request.setAttribute("mode","MODE_LOGING");
 		return "login";
 	}
 	
-	@RequestMapping("/login-user")
-	public String loginUser(@ModelAttribute Player player,HttpServletRequest request)
+	@RequestMapping(value="/login-user")
+	public String loginuser(@ModelAttribute Player player,HttpServletRequest req)
 	{
-		if(playerService.findByPlayer_NameAndPassword(player.getPlayer_Name(),player.getPassword())!=null) {
-		//	System.out.println("OK");
-		return "index";	
-			
+		System.out.println(player.getUsername());
+		System.out.println(player.getPassword());
+		if(playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword())!=null) {
+			System.out.println("Yes");
+			return "index";
 		}
-		
-		else
-		{
-			request.setAttribute("error", "Invalid U_Name");
-			request.setAttribute("MODE", "MODE_LOGING");
-			return "login";
+		else {
+			System.out.println("No");
+			return "index";
 		}
-			
 	}
+	
+
 	
 }

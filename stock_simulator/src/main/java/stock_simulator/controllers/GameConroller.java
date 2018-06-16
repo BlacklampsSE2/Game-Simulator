@@ -42,4 +42,11 @@ public class GameConroller {
 	req.setAttribute("mode", "GAME_VIEW");
 	return "index";
 	}
+	
+	@RequestMapping(value="/login")
+	public String login(HttpServletRequest request)
+	{
+		request.setAttribute("mode","MODE_LOGIN");
+		return "login";
+	}
 }
