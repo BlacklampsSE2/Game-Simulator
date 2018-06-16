@@ -15,12 +15,14 @@ import stock_simulator.models.Company;
 public class CompanyService {
 
 	Company company_Obj = new Company();
-	int[] RT = company_Obj.RT;
-	int[] MT=company_Obj.MT;
-	int[]ST=company_Obj.ST;
-	int[] ET = company_Obj.ET;
-	String []Evenets=company_Obj.Evenets;
 	
+	public int[] RT = new int[20];
+	public int[] MT = new int[20];
+	public int[] ST = new int[20];
+	public int[] ET = new int[20];
+	public String []Evenets=new String[20]; 
+	public int[] Final = new int[20];
+
 
 	double Sector_length = 0.33;
 	double Stock_length = 0.67;
@@ -201,4 +203,17 @@ public class CompanyService {
 		}
 
 	}
+
+	public void CalculateTrends()
+	{
+		for(int r=0;r<Final.length;r++)
+		{
+			Final[r]=RT[r]+MT[r]+ST[r]+ET[r];
+		}
+	}
+
+
+
+
+
 }
