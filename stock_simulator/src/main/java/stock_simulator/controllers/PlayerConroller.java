@@ -3,17 +3,19 @@ package stock_simulator.controllers;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import stock_simulator.models.Bank;
 import stock_simulator.models.Player;
 import stock_simulator.services.PlayerService;
 
 @Controller
+@SessionAttributes("name")
 public class PlayerConroller {
 
 	@Autowired
@@ -43,4 +45,17 @@ public class PlayerConroller {
 	req.setAttribute("mode", "PLAYER_VIEW");
 	return "index";
 	}
+	
+	@RequestMapping(value="/login",method= RequestMethod.POST)
+	public String handleLoginRequest(@RequestParam String name,
+			@RequestParam String password, ModelMap model) {
+			if(!PlayerService.validateUser(name,password)) {
+				model.put("errorMessage","Invalid Credentials");
+			}
+			model.put("name", name);
+			model.put("pasword", password);
+			return "Welcomes";
+			
+	}
+	
 }

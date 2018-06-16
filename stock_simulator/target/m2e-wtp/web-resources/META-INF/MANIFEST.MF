@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: stock_simulator Maven Webapp
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Snookie
+Built-By: Ruvimal Senanayake
 Implementation-Vendor-Id: com.blacklamps.stock_game
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://maven.apache.org
