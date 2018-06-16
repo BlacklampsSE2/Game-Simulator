@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 
 <head>
@@ -109,7 +110,7 @@
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you login credentials</p>
                     <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
-					<form>
+					<form action="/login" method="POST">
 					<div class="form-group">
 					<label for="usr">Name:</label>
 					<input type="text" class="form-control" id="usr">
