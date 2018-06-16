@@ -46,15 +46,28 @@ public class PlayerConroller {
 	return "index";
 	}
 	
-	@RequestMapping(value="/login",method= RequestMethod.POST)
-	public String handleLoginRequest(@RequestParam String name,
-			@RequestParam String password, ModelMap model) {
-			if(!PlayerService.validateUser(name,password)) {
-				model.put("errorMessage","Invalid Credentials");
-			}
-			model.put("name", name);
-			model.put("pasword", password);
-			return "Welcomes";
-			
+	@GetMapping("/login")
+	public String login(HttpServletRequest request)
+	{
+		request.setAttribute("mode","MODE_LOGING");
+		return "login";
 	}
+	
+	@RequestMapping(value="/login-user")
+	public String loginuser(@ModelAttribute Player player,HttpServletRequest req)
+	{
+		System.out.println(player.getUsername());
+		System.out.println(player.getPassword());
+		if(playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword())!=null) {
+			System.out.println("Yes");
+			return "index";
+		}
+		else {
+			System.out.println("No");
+			return "index";
+		}
+	}
+	
+
+	
 }
