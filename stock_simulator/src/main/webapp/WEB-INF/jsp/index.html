@@ -304,7 +304,9 @@
                 <div class="col">
                     <hr class="animation-element extend">
                 </div>
-				
+                <c:choose>
+				<c:when test="${mode == 'BANK_VIEW'}">
+			
 				<table class="table table-striped">
 
 					<thead>
@@ -315,23 +317,18 @@
 					  </tr>
 					</thead>
 					<tbody>
-					  <tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>john@example.com</td>
-					  </tr>
-					  <tr>
-						<td>Mary</td>
-						<td>Moe</td>
-						<td>mary@example.com</td>
-					  </tr>
-					  <tr>
-						<td>July</td>
-						<td>Dooley</td>
-						<td>july@example.com</td>
-					  </tr>
+					  <c:forEach var="bank" items="${banks}">
+						<tr>
+							<td>${bank.name}</td>
+							<td>${bank.sector}</td>
+							<td><a href="updateBank?id=${bank.id}">Edit</a></td>
+			        	</tr>
+					  </c:forEach>
 					</tbody>
 				  </table>
+        		</c:when>
+
+			</c:choose>
             </div>
         </div>
         <!-- /// Portfolio SECTION /// -->
