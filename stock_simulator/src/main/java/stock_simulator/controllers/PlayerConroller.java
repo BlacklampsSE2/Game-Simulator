@@ -55,7 +55,7 @@ public class PlayerConroller {
 			}
 			model.put("name", name);
 			model.put("pasword", password);
-			return "Welcome";
+			return "Welcomes";
 			
 	}
 	
