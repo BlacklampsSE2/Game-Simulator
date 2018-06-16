@@ -12,6 +12,7 @@ import stock_simulator.models.Bank;
 import stock_simulator.services.BankService;
 
 
+
 @Controller
 public class BankConroller {
  
