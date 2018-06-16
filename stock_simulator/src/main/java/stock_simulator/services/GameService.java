@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import stock_simulator.dao.GameRepository;
 import stock_simulator.models.Game;
 
+
 @Service
 public class GameService {
 	@Autowired
