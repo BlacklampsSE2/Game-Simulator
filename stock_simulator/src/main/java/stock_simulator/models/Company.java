@@ -20,7 +20,7 @@ public class Company {
 	public int[] MT = new int[20];
 	public int[] ST = new int[20];
 	public int[] ET = new int[20];
-	public int[] Final = new int[20];
+	public int[] w = new int[20];
 	
 	
 	public int getComapany_Id() {
