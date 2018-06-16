@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import stock_simulator.models.Bank;
 import stock_simulator.models.Player;
 import stock_simulator.services.PlayerService;
 
