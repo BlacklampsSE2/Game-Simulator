@@ -8,6 +8,16 @@ import javax.persistence.Id;
 
 @Entity(name = "Company")
 public class Company {
+	
+	/*public int[] RT = new int[20];
+	public int[] MT = new int[20];
+	public int[] ST = new int[20];
+	public int[] ET = new int[20];
+	public String []Evenets=new String[20]; 
+	public int[] Final = new int[20];*/
+	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Comapany_Id;
@@ -16,11 +26,7 @@ public class Company {
 	private String Sector_Name;
 	private double Stock_Starting_Price;
 	
-	public int[] RT = new int[20];
-	public int[] MT = new int[20];
-	public int[] ST = new int[20];
-	public int[] ET = new int[20];
-	public int[] w = new int[20];
+	
 	
 	
 	public int getComapany_Id() {

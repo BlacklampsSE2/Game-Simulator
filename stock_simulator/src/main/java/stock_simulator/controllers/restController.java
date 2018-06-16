@@ -6,15 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import stock_simulator.models.Company;
 import stock_simulator.models.Player;
+import stock_simulator.services.CompanyService;
 import stock_simulator.services.PlayerService;
 
 @RestController
 public class restController {
 
 	@Autowired
-	private PlayerService GameService;
+	private CompanyService GameService;
 	private int client_count=0;
+//	private CompanyService
 	
 	@GetMapping(value="/")
 	public String hello()
@@ -25,8 +28,8 @@ public class restController {
 	}
 	
 	@GetMapping("/findall")
-	public Collection<Player> getAll(){
-		return GameService.findAllPlayers();
+	public Collection<Company> getAll(){
+		return GameService.findAllCompanies();
 	}
 	
 	

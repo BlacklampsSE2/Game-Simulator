@@ -1,5 +1,9 @@
 package stock_simulator.controllers;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,4 +46,12 @@ public class CompanyConroller {
 	req.setAttribute("mode", "COMPANY_VIEW");
 	return "index";
 	}
+	
+	@GetMapping("/test")
+	public Collection<Company>getall()
+	{
+		return companyService.findAllCompanies();
+	}
+	
+	
 }

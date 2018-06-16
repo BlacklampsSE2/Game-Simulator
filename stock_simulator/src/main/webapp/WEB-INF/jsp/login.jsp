@@ -110,14 +110,14 @@
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you login credentials</p>
                     <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
-					<form action="/login" method="POST">
+					<form action="/login-user" method="POST">
 					<div class="form-group">
 					<label for="usr">Name:</label>
-					<input type="text" class="form-control" id="usr">
+					<input type="text" class="form-control" name="player_Name" value="${player.player_Name}">
 					</div>
 					<div class="form-group">
 					<label for="usr">Password:</label>
-					<input type="text" class="form-control" id="usr">
+					<input type="text" class="form-control" name="password" value="${player.password}">
 					<button type="submit" id="form-signup" class="button">Login</button>
 					</div>
 					</form>

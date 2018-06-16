@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +13,8 @@ import stock_simulator.dao.PlayerRepository;
 import stock_simulator.models.Player;
 
 @Service
+@Transactional
+
 public class PlayerService {
 	@Autowired
 	private PlayerRepository playerRepository;
@@ -39,10 +41,10 @@ public class PlayerService {
 	{
 		playerRepository.save(player);
 	}
-	public static boolean validateUser(String name,String password) 
+	
+	
+	public Player findByPlayer_NameAndPassword(String player_Name,String password)
 	{
-		String query="Select * from Player where Player_Name=name, Password=password";
-		
-		return true;
+		return playerRepository.findByPlayer_NameAndPassword(player_Name, password);
 	}
 }
