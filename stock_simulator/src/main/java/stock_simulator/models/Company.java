@@ -9,8 +9,6 @@ import javax.persistence.Id;
 @Entity(name = "Company")
 public class Company {
 	
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int Comapany_Id;
