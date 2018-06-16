@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import stock_simulator.dao.BankRepository;
 import stock_simulator.models.Bank;
 
-
-
 @Service
 public class BankService {
 	@Autowired
