@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import stock_simulator.models.Company;
 
+
 @Repository
 public interface CompanyRepository extends CrudRepository<Company,Integer>{
 
