@@ -23,6 +23,7 @@ public class CompanyService {
 	public String []Evenets=new String[20]; 
 	public int[] Final = new int[20];
 
+
 	double Sector_length = 0.33;
 	double Stock_length = 0.67;
 	
