@@ -85,7 +85,7 @@
                             <a class="nav-link" href="#leadershipboard">Leadershipboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                            <a class="nav-link" href="#Portfolio">Portfolio</a>
                         </li>
 						 <li class="nav-item">
                             <a class="nav-link" href="#markethistory">Market History</a>
@@ -269,8 +269,8 @@
 					<tbody>
 					  <c:forEach var="bank" items="${banks}">
 						<tr>
-							<td>${bank.Timestamp}</td>
-							<td>${bank.Game_Status}</td>
+							<td>${game_history.Timestamp}</td>
+							<td>${game_history.Game_Status}</td>
 			        	</tr>
 					  </c:forEach>
 					</tbody>
