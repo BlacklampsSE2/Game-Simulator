@@ -144,7 +144,7 @@
             </div>
             <div class="row ">
                 <div class="col-md-11 small-margin">
-                   <p>This is multi-player which can be played amoung human or no human players. In this game we have created a stock market which changes each and every time a game is played. And players can manage their own portfolios.</p>
+                   <p>This is multi-player which can be played amoung human or AI players. In this game we have created a stock market which changes each and every time a game is played. And players can manage their own portfolios.</p>
                 </div>
                 
             </div>
@@ -167,7 +167,7 @@
                     <div class="col-lg-12 col-xl-7 game-card-right">
                         <h2 class="short-hr-left">Stock Market Simulator</h2>
                         
-                        <p class="game-description">This is multi-player which can be played amoung human or no human players. In this game we have created a stock market which changes each and every time a game is played. And players can manage their own portfolios.</p>
+                        <p class="game-description">To play this game you need a minimum of 3 players. If no human players are joined you will be automatically be assigned with AI players. So Enjoy our Simulator..........</p>
                         <form id="newsletter" data-toggle="validator">
                         <button type="submit" id="form-signup" class="button">Play Game</button>
                         <div id="msgSignup" class="h3 text-center hidden"></div>
@@ -192,21 +192,13 @@
             </div>
             <div class="row medium-margin">
                 <div class="col-md-11 tiny-margin">
-                    <p>Our passion unites us. All six of us stand as one.</p>
+                   
                 </div>
                 <div class="row text-center">
                     <div class="col-md-3 team-card">
                         <figure>
                             <img src="images/team1.jpg" class="img-fluid team-img" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                            
                         </figure>
                         <p class="team-name">R.M.B.Senanayake</p>
                         <p class="subtle">Team Leader</p>
@@ -214,15 +206,7 @@
                     <div class="col-md-3 team-card">
                         <figure>
                             <img src="images/team2.jpg" class="img-fluid" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                            
                         </figure>
                         <p class="team-name">R.M.A.P.Sandaru</p>
                         <p class="subtle">Team Member</p>
@@ -230,15 +214,7 @@
                     <div class="col-md-3 team-card">
                         <figure>
                             <img src="images/team3.jpg" class="img-fluid" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                           
                         </figure>
                         <p class="team-name">A.P.P.Perera</p>
                         <p class="subtle">Team Member</p>
@@ -246,47 +222,21 @@
                     <div class="col-md-3 team-card">
                         <figure>
                             <img src="images/team4.jpg" class="img-fluid" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                           
                         </figure>
                         <p class="team-name">D.U.C.Ranathunga</p>
                         <p class="subtle">Team Member</p>
                     </div>
 					<div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team4.jpg" class="img-fluid" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                            <img src="images/team5.jpg" class="img-fluid" alt="teammember">
                         </figure>
                         <p class="team-name">R.P.V.L.Madushanka</p>
                         <p class="subtle">Team Member</p>
                     </div>
 					<div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team4.jpg" class="img-fluid" alt="teammember">
-                            <figcaption class="team-caption">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</p>
-                                <hr class="hr-short">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                                </ul>
-                            </figcaption>
+                            <img src="images/team6.jpg" class="img-fluid" alt="teammember">
                         </figure>
                         <p class="team-name">E.M.M.Ekanayake</p>
                         <p class="subtle">Team Member</p>
@@ -304,7 +254,8 @@
                 <div class="col">
                     <hr class="animation-element extend">
                 </div>
-                <c:choose>
+				</div>
+				<c:choose>
 				<c:when test="${mode == 'GAMEHISTORY_VIEW'}">
 			
 				<table class="table table-striped">
@@ -327,7 +278,7 @@
         		</c:when>
 
 			</c:choose>
-            </div>
+            
         </div>
         <!-- /// Portfolio SECTION /// -->
         <div id="Portfolio" class="large-margin">
@@ -412,7 +363,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p><!-- Copyright Text -->
+                        <p id="copyright">� 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p><!-- Copyright Text -->
                         <ul class="social-links"> <!-- Social Media Icons -->
                             <li><a href="https://github.com/BlacklampsSE2/Game-Simulator"><i class="fa fa-github icon-social"></i></a></li>
                         </ul>
