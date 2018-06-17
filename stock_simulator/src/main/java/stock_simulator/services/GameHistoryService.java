@@ -3,13 +3,9 @@ package stock_simulator.services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import stock_simulator.dao.BankRepository;
 import stock_simulator.dao.GameHistoryRepository;
-import stock_simulator.models.Bank;
 import stock_simulator.models.GameHistory;
 
 

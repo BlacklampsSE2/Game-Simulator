@@ -5,10 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import stock_simulator.models.Company;
 import stock_simulator.models.Player;
-import stock_simulator.services.CompanyService;
 import stock_simulator.services.PlayerService;
 
 @RestController
