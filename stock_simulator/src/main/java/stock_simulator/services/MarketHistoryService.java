@@ -15,7 +15,7 @@ public class MarketHistoryService {
 	@Autowired
 	private MarketHistoryRepository marketHistoryRepository;
 
-	public Collection<MarketHistory> findAllBanks() {
+	public Collection<MarketHistory> findAllMarkets() {
 		List<MarketHistory> markets = new ArrayList<MarketHistory>();
 		for (MarketHistory market : marketHistoryRepository.findAll()) {
 			markets.add(market);

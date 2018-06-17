@@ -267,10 +267,10 @@
 					  </tr>
 					</thead>
 					<tbody>
-					  <c:forEach var="bank" items="${banks}">
+					  <c:forEach var="gamehistory" items="${gamehist}">
 						<tr>
-							<td>${game_history.Timestamp}</td>
-							<td>${game_history.Game_Status}</td>
+							<td>${game.timeStamp}</td>
+							<td>${game.gameStatus}</td>
 			        	</tr>
 					  </c:forEach>
 					</tbody>
@@ -293,21 +293,25 @@
             </div>
 			
 			 <c:choose>
-				<c:when test="${mode == 'GAMEHISTORY_VIEW'}">
+				<c:when test="${mode == 'PORTFOLIO_VIEW'}">
 			
 				<table class="table table-striped">
 
 					<thead>
 					  <tr>
-						<th>Date/Time</th>
-						<th>Win/Loss</th>
+						<th>Company</th>
+						<th>Buy/Sell</th>
+						<th>Stock Qty</th>
+						<th>Stock Price</th>
 					  </tr>
 					</thead>
 					<tbody>
-					  <c:forEach var="bank" items="${banks}">
+					  <c:forEach var="portfolio" items="${portfolios}">
 						<tr>
-							<td>${bank.Timestamp}</td>
-							<td>${bank.Game_Status}</td>
+							<td>${portfolio.Timestamp}</td>
+							<td>${portfolio.Game_Status}</td>
+							<td>${portfolio.Timestamp}</td>
+							<td>${portfolio.Game_Status}</td>
 			        	</tr>
 					  </c:forEach>
 					</tbody>

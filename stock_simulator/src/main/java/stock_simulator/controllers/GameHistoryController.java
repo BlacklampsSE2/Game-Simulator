@@ -13,9 +13,9 @@ public class GameHistoryController {
 	private GameHistoryService gamehistoryservice;
 
 	@GetMapping("/gamehistory")
-	public String findAllBanks(HttpServletRequest req)
+	public String findAllGames(HttpServletRequest req)
 	{
-		req.setAttribute("gamehist", gamehistoryservice.findAllBanks());
+		req.setAttribute("gamehist", gamehistoryservice.findAllGames());
 		req.setAttribute("mode", "GAMEHISTORY_VIEW");
 		return "index";
 	}
