@@ -1,9 +1,6 @@
 package stock_simulator.controllers;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import stock_simulator.models.Company;
-import stock_simulator.models.Game;
 import stock_simulator.services.CompanyService;
 
 @Controller
