@@ -16,7 +16,7 @@ public class GameHistoryService {
 	@Autowired
 	private GameHistoryRepository gamehistoryRepository;
 	
-	public Collection<GameHistory>findAllBanks(){
+	public Collection<GameHistory>findAllGames(){
 		List<GameHistory>gamehist=new ArrayList<GameHistory>();
 		for(GameHistory game:gamehistoryRepository.findAll()) {
 			gamehist.add(game);

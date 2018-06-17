@@ -5,14 +5,16 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import stock_simulator.models.Player;
-import stock_simulator.services.PlayerService;
+
+import stock_simulator.models.Bank;
+import stock_simulator.services.BankService;
+
 
 @RestController
 public class restController {
 
 	@Autowired
-	private PlayerService GameService;
+	private BankService GameService;
 	private int client_count=0;
 //	private CompanyService
 	
@@ -25,8 +27,8 @@ public class restController {
 	}
 	
 	@GetMapping("/findall")
-	public Collection<Player> getAll(){
-		return GameService.findAllPlayers();
+	public Collection<Bank> getAll(){
+		return GameService.findAllBanks();
 	}
 	
 	
