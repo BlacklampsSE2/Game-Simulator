@@ -37,4 +37,9 @@ public class BankService {
 	{
 		bankRepository.save(bank);
 	}
+	
+	public void test()
+	{
+		System.out.println("OK");
+	}
 }

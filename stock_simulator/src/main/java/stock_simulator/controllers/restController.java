@@ -2,8 +2,12 @@ package stock_simulator.controllers;
 
 import java.util.Collection;
 
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
@@ -28,8 +32,18 @@ public class restController {
 	
 	@GetMapping("/findall")
 	public Collection<Bank> getAll(){
+		
 		return GameService.findAllBanks();
 	}
+	
+	@GetMapping("/findall2")
+	public String save() {
+	System.out.println("Save");
+	GameService.test();
+	return "index";
+	}
+	
+	
 	
 	
 }

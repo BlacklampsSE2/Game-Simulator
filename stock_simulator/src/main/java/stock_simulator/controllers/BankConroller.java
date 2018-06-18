@@ -20,7 +20,7 @@ public class BankConroller {
 	private BankService bankService;
 	
 	
-	@GetMapping("/hello")
+	@GetMapping("/hesllo")
 	public String findAllBanks(HttpServletRequest req)
 	{
 		req.setAttribute("banks", bankService.findAllBanks());

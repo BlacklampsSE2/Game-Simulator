@@ -51,16 +51,17 @@ public class CompanyService {
 		companyRepository.save(company);
 	}
 
-	public void RandomTrend() {
+	public int[] RandomTrend() {
 		Random rand = new Random();
 		for (int i = 0; i < RT.length; i++) {
 			RT[i] = rand.nextInt(2 + 1 + 2) - 2;
 			// System.out.println(RT[i]);
 		}
+		return RT;
 
 	}
 
-	public void SectorTrend() {
+	public int[] SectorTrend() {
 		Random prob = new Random();
 		Random rand = new Random();
 
@@ -90,9 +91,16 @@ public class CompanyService {
 			}
 
 		}
+		for (int j = 0; j <ST.length; j++) {
+			System.out.println(j+" : "+ST[j]);
+			
+			
+			
+		}
+		return ST;
 	}
 
-	public void MarketTrend() {
+	public int[] MarketTrend() {
 		Random prob = new Random();
 		Random rand = new Random();
 
@@ -122,9 +130,10 @@ public class CompanyService {
 			}
 
 		}
+		return MT;
 	}
 
-	public void EventTrend() {
+	public int[] EventTrend() {
 		Random rand = new Random();
 		for (int i = 0; i < ET.length; i++) {
 			;
@@ -201,15 +210,23 @@ public class CompanyService {
 			}
 			// System.out.println(a);
 		}
+		return ET;
 
 	}
 
-	public void CalculateTrends()
+	public String[] GetEventsDetails()
+	{
+		return Evenets;
+	}
+	
+	
+	public int[] CalculateTrends()
 	{
 		for(int r=0;r<Final.length;r++)
 		{
 			Final[r]=RT[r]+MT[r]+ST[r]+ET[r];
 		}
+		return Final;
 	}
 
 
