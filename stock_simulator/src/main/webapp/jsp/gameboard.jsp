@@ -140,7 +140,7 @@
 				</div>
            <form>
 				<div class="form-group">
-					<textarea class="form-control" rows="10" id="comment" style="color: black; background-color: transparent;"></textarea>
+					<textarea class="form-control" rows="10" id="comment" cols="70" style="color: black; background-color: transparent;"></textarea>
 				</div>
 			</form>
             </div>
@@ -152,7 +152,7 @@
 			</div>
 			<form>
 				<div class="form-group">
-					<textarea class="form-control" rows="10" id="comment" style="color: black; background-color: transparent;"></textarea>
+					<textarea class="form-control"  rows="10" cols="70" id="comment" style="color: black; background-color: transparent;"></textarea>
 				</div>
 			</form>
 			
