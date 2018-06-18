@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 
 <head>
@@ -86,6 +87,7 @@
                 </div>
                 <div class="col">
                     <hr class="animation-element extend">
+					<h2 align="right">Cash: <span class="colored">Rs.100</span></h2>
 					<h2 align="right">Time: <span class="colored">00:12</span></h2>
 					<h2 align="right">Turn: <span class="colored">5/20</span></h2>
                 </div>
@@ -95,18 +97,22 @@
 					<form>
 					
 					
+					   <div class="container_my">
+            <!--<div class="box_1">-->
+			
+			<div class="row">
+			<div class="column">
+			
 					<div class="col-md-auto">
                     <h1 class="animation-element slide-down">Company <span class="colored">Details</span></h1>
 					
 					</div>
-					   <div class="container_my">
-            <div class="box_1">
                 <table class="table table-striped">
 
                     <thead>
                       <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
+                        <th>Company</th>
+                        <th>Stock Price</th>
                         <th>Qty</th>
                         <th>Buy</th>
                         <th>Sell</th>
@@ -123,39 +129,37 @@
                             <td><p>
                                 <button class="fa fa-shopping-cart" type="button"></button>
                             </p> </td>
-                      </tr>
-                            
-                      </tr>
-                      <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td><input type="text" class="form-control" id="usr"></td>
-                        <td><p>
-                                <button class="fa fa-shopping-cart" type="button"></button>
-                            </p> </td>
-                            <td><p>
-                                <button class="fa fa-shopping-cart" type="button"></button>
-                            </p> </td>
-                      </tr>
-                      <tr>
-                        <td>Dooley</td>
-                        <td>Dooley</td>
-                        <td><input type="text" class="form-control" id="usr"></td>
-                        <td><p>
-                                <button class="fa fa-shopping-cart" type="button"></button>
-                            </p> 
-                        </td>
-                        <td><p>
-                                <button class="fa fa-shopping-cart" type="button"></button>
-                            </p> </td>
-                      </tr>
+                      </tr> 
+                      </tr>   
                     </tbody>
                   </table>  
             </div>
-            <div class="box_2">
-             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod autem, quis voluptatum illum eaque, assumenda, voluptates minus, dolores delectus impedit adipisci hic! Magni odio nihil natus quidem perspiciatis, quibusdam vero.</p>   
+			<div class="column">
+				<div class="col-md-auto">
+                   <h1 class="animation-element slide-down">Rumo<span class="colored">urs</span></h1>
+				</div>
+           <form>
+				<div class="form-group">
+					<textarea class="form-control" rows="10" id="comment" style="color: black; background-color: transparent;"></textarea>
+				</div>
+			</form>
             </div>
-            
+        </div>
+			<div class="row">
+			<div class="column">
+			<div class="col-md-auto">
+               <h1 class="animation-element slide-down">News<span class="colored">Feed</span></h1>
+			</div>
+			<form>
+				<div class="form-group">
+					<textarea class="form-control" rows="10" id="comment" style="color: black; background-color: transparent;"></textarea>
+				</div>
+			</form>
+			
+			</div>
+			</div>
+		
+		
         </div>
 
 
@@ -174,7 +178,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p id="copyright">Â© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p><!-- Copyright Text -->
+                        <p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p><!-- Copyright Text -->
                         <ul class="social-links"> <!-- Social Media Icons -->
                             <li><a href="https://github.com/BlacklampsSE2/Game-Simulator"><i class="fa fa-github icon-social"></i></a></li>
                         </ul>
