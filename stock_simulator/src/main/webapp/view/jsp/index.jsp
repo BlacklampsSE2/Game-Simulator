@@ -168,7 +168,7 @@
                         <h2 class="short-hr-left">Stock Market Simulator</h2>
                         
                         <p class="game-description">To play this game you need a minimum of 3 players. If no human players are joined you will be automatically be assigned with AI players. So Enjoy our Simulator..........</p>
-                        <form id="newsletter" data-toggle="validator">
+                        <form id="newsletter" data-toggle="validator" action="/playgame" method="POST">
                         <button type="submit" id="form-signup" class="button">Play Game</button>
                         <div id="msgSignup" class="h3 text-center hidden"></div>
                     </form>

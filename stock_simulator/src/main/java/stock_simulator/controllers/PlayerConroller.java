@@ -63,8 +63,15 @@ public class PlayerConroller {
 		}
 		else {
 			System.out.println("No");
-			return "index";
+			return "login";
 		}
+	}
+	
+	@RequestMapping(value="/playgame")
+	public String loginuser()
+	{
+		System.out.println("gameboards");
+		return "gameboard";
 	}
 	
 
