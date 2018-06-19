@@ -62,33 +62,35 @@ public class AnalystController {
 
 					if (ST[turn] == ST[turn + 1]) {
 
-						emitter.send("Sometimes in the next turn sector trend might not increase for " + ST[turn] + " "+ turn);
+						emitter.send("Sometimes in the next turn sector trend might not increase for " + ST[turn] + " "
+								+ turn);
 					}
 					if (MT[turn] == MT[turn + 1]) {
 
-						emitter.send("Sometimes in the next turn Market trend might not increase for " + MT[turn] + " "+ turn);
+						emitter.send("Sometimes in the next turn Market trend might not increase for " + MT[turn] + " "
+								+ turn);
 					}
 					if (RT[turn] == RT[turn + 1]) {
 
-						emitter.send("Sometimes in the next turn Random trend might not increase for " + RT[turn] + " "+ turn);
+						emitter.send("Sometimes in the next turn Random trend might not increase for " + RT[turn] + " "
+								+ turn);
 					}
 
 					if (ST[turn] < ST[turn + 1]) {
 
-						emitter.send("In the next turn sector trend might go down for" + ST[turn] + " "+ turn);
+						emitter.send("In the next turn sector trend might go down for" + ST[turn] + " " + turn);
 
 					}
 					if (MT[turn] < MT[turn + 1]) {
 
-						emitter.send("In the next turn Market trend might go down for" + MT[turn] + " "+ turn);
+						emitter.send("In the next turn Market trend might go down for" + MT[turn] + " " + turn);
 
 					}
 					if (RT[turn] < RT[turn + 1]) {
 
-						emitter.send("In the next turn Random trend might go down for" +  RT[turn] + " "+ turn);
+						emitter.send("In the next turn Random trend might go down for" + RT[turn] + " " + turn);
 					}
-					
-					
+
 					if (ET[turn] == 0) {
 
 						System.out.println("events might not occur in next turn for" + ET[turn]);
@@ -119,7 +121,6 @@ public class AnalystController {
 						}
 
 					}
-					
 
 					if (Final[turn] > Final[turn + 1]) {
 
@@ -135,9 +136,6 @@ public class AnalystController {
 
 						emitter.send("The stock price might not change in the future for ");
 					}
-					
-					
-					
 
 					Thread.sleep(2000);
 				} catch (IOException | InterruptedException e) {
@@ -155,10 +153,3247 @@ public class AnalystController {
 
 		return emitter;
 	}
+
 	@GetMapping("/all")
 	public String Test() {
-		
+
 		return "gameboard";
 	}
+	
+	@RequestMapping("/Newsfeed")
+	public SseEmitter handlenewsfeeds()  {
+		
+		final SseEmitter emitter = new SseEmitter();
+		ExecutorService service = Executors.newSingleThreadExecutor();
+		service.execute(() -> {
+			for (int turn = 0; turn < this.length; turn++) {
+				try {
+					int time=20000;
+					
+							
+								if (turn == 0)
+									{
+										Thread.sleep(time);
+										continue;
+								
+									}
+							
+								if (ST[turn] > ST[turn - 1])
+									{
+										emitter.send("Sector trend has increased");
+									
+										if (MT[turn] > MT[turn - 1]) 
+											{
+												emitter.send("Market trend has increased");	
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
 
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											} 
+
+										if (MT[turn] < MT[turn - 1]) 
+											{
+												emitter.send("Market trend has decreased");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											}
+								
+										if (MT[turn] == MT[turn - 1])
+											{
+												emitter.send("Market trend has not changed");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												
+											}
+								}
+							  
+								
+								if (ST[turn] < ST[turn - 1])
+									{
+										emitter.send("Sector trend has increased");
+									
+										if (MT[turn] > MT[turn - 1]) 
+											{
+												emitter.send("Market trend has increased");	
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											} 
+
+										if (MT[turn] < MT[turn - 1]) 
+											{
+												emitter.send("Market trend has decreased");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											}
+								
+										if (MT[turn] == MT[turn - 1])
+											{
+												emitter.send("Market trend has not changed");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												
+											}
+								}if (ST[turn] == ST[turn - 1])
+									{
+										emitter.send("Sector trend has increased");
+									
+										if (MT[turn] > MT[turn - 1]) 
+											{
+												emitter.send("Market trend has increased");	
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											} 
+
+										if (MT[turn] < MT[turn - 1]) 
+											{
+												emitter.send("Market trend has decreased");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+											}
+								
+										if (MT[turn] == MT[turn - 1])
+											{
+												emitter.send("Market trend has not changed");
+												if (RT[turn] > RT[turn - 1])
+													{
+														emitter.send("Random trend has increased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												if (RT[turn] < RT[turn - 1]) 
+													{
+														emitter.send("Random trend has decreased ");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+													
+												if (RT[turn] == RT[turn - 1])
+													{
+														emitter.send("Random trend has not changed");
+														if(Final[turn]>Final[turn-1])
+															{
+																emitter.send("Stock price has increased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+															
+														if(Final[turn]<Final[turn-1])
+															{
+																emitter.send("Stock price has decreased ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}	
+														if(Final[turn]==Final[turn-1])
+															{
+																emitter.send("Stock price has no change ");
+																if (ET[turn] == 0) 
+																	{
+																		Thread.sleep(time);
+																	}
+
+																else  
+																	{
+																		if (events[turn].equals("BOOM")) 
+																			{
+																				emitter.send("BOOM event is occuring");
+																				Thread.sleep(time);					
+																			}
+																		else if (events[turn].equals("BURST")) 
+																			{
+																				emitter.send("BURST event is occuring");
+																				Thread.sleep(time);
+																			}
+																		else if (events[turn].equals("PROFIT_WARNING")) 
+																			{
+																				emitter.send("PROFIT_WARNING event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("TAKE_OVER")) 
+																			{
+																				emitter.send("TAKE_OVER event is occuring");
+																				Thread.sleep(time);
+																			} 
+																		else if (events[turn].equals("SCANDAL"))
+																			{
+																				emitter.send("SCANDAL event is occuring");
+																				Thread.sleep(time);
+																			}
+																	}
+															}
+													}
+												
+											}
+								}
+					
+				}
+				catch (IOException | InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					emitter.completeWithError(e);
+					return;
+				}
+			}	
+			
+		});
+		
+		
+	
+		return emitter;
+	}
 }
