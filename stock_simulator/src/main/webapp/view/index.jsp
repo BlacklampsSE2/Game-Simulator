@@ -156,9 +156,9 @@
                                 <i class="fa fa-picture-o fa-3x"></i>
                             </div>
                             <picture>
-                                <source media="(min-width: 1200px)" srcset="images/game1.jpg">
-                                <source media="(min-width: 768px)" srcset="images/game1_large.jpg">
-                                <img src="images/game1.jpg" class="img-fluid" alt="aurora image">
+                                <source media="(min-width: 1200px)" srcset="http://localhost:8080/view/images/game1.jpg">
+                                <source media="(min-width: 768px)" srcset="http://localhost:8080/view/images/game1_large.jpg">
+                                <img src="http://localhost:8080/view/images/game1.jpg" class="img-fluid" alt="aurora image">
                             </picture>
                         </a>
                         <a href="http://localhost:8080/view/images/game1.1.jpg" data-lightbox="screenshots_aurora"></a>
@@ -168,7 +168,7 @@
                         <h2 class="short-hr-left">Stock Market Simulator</h2>
                         
                         <p class="game-description">To play this game you need a minimum of 3 players. If no human players are joined you will be automatically be assigned with AI players. So Enjoy our Simulator..........</p>
-                        <form id="newsletter" data-toggle="validator" action="/playgame" method="POST">
+                        <form action="/playgame" method="POST">
                         <button type="submit" id="form-signup" class="button">Play Game</button>
                         <div id="msgSignup" class="h3 text-center hidden"></div>
                     </form>
