@@ -10,7 +10,7 @@
 	<script>
 		var eventSource=null;
 		function start(){
-			eventSource=new EventSource("http://localhost:8080/SSEServlet");
+			eventSource=new EventSource("/sseTest");
 			eventSource.onopen=function(){displayTextArea.value+= 'Connected...'+'\n';};
 			eventSource.onmessage=function(message){displayTextArea.value+=message.data+'\n\n'};
 			eventSource.onerror=function(){displayTextArea.value+='Error Occured...'+'\n'};
