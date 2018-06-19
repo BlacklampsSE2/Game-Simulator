@@ -21,28 +21,32 @@
     <meta property="og:url" content="" /> <!--where do you want your post to link to-->
     <meta property="og:type" content="article" />
 
-    <!-- Favicon and Apple Icons -->
-    <link rel="apple-touch-icon" type="css/text" media="print" sizes="57x57" href="../images/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../images/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../images/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../images/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../images/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../images/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../images/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="../images/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../images/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
-	
+   <!-- Favicon and Apple Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:8080/view/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://localhost:8080/view/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:8080/view/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://localhost:8080/view/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:8080/view/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://localhost:8080/view/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:8080/view/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://localhost:8080/view/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:8080/view/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="http://localhost:8080/view/view/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:8080/view/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://localhost:8080/view/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:8080/view/images/favicon/favicon-16x16.png">
+
     <!-- STYLES -->
     <!-- Bootstrap -->
-    <style><%@include file="css/bootstrap.min.css"%></style>
-	<style><%@include file="css/style.css"%></style>
-	<style><%@include file="css/font-awesome.min.css"%></style>
-	<style><%@include file="css/animations.css"%></style>
-	<style><%@include file="css/lightbox.min.css"%></style>
+    <link href="http://localhost:8080/view/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link href="http://localhost:8080/view/css/style.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="http://localhost:8080/view/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Animations -->
+    <link href="http://localhost:8080/view/css/animations.css" rel="stylesheet">
+    <!-- Lightbox -->
+    <link href="http://localhost:8080/view/css/lightbox.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -120,10 +124,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="small-margin">We are developing a stock market simulator game as part of our final project of our Bsc (Hons) Computer Science Degree. Our team name is Blacklamps.</p>
-                    <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
+                    <!--<img id="awards" src="http://localhost:8080/view/images/awards.png" class="img-fluid" alt="awads">-->
                 </div>
                 <div class="col-md-6">
-                    <img id="support-image" src="images/digital_collage.png" class="img-fluid" alt="digital collage">
+                    <img id="support-image" src="http://localhost:8080/view/images/digital_collage.png" class="img-fluid" alt="digital collage">
                 </div>
             </div>
         </div>
@@ -147,7 +151,7 @@
             <div class="games-portfolio ">
                 <div class="row game-card pc"><!-- Game Card -->
                     <div class="col-lg-12 col-xl-5 game-card-left">
-                        <a href="images/game1_large.jpg" data-lightbox="screenshots_aurora">
+                        <a href="http://localhost:8080/view/images/game1_large.jpg" data-lightbox="screenshots_aurora">
                             <div class="overlay">
                                 <i class="fa fa-picture-o fa-3x"></i>
                             </div>
@@ -157,8 +161,8 @@
                                 <img src="images/game1.jpg" class="img-fluid" alt="aurora image">
                             </picture>
                         </a>
-                        <a href="images/game1.1.jpg" data-lightbox="screenshots_aurora"></a>
-                        <a href="images/game1.2.jpg" data-lightbox="screenshots_aurora"></a>
+                        <a href="http://localhost:8080/view/images/game1.1.jpg" data-lightbox="screenshots_aurora"></a>
+                        <a href="http://localhost:8080/view/images/game1.2.jpg" data-lightbox="screenshots_aurora"></a>
                     </div>
                     <div class="col-lg-12 col-xl-7 game-card-right">
                         <h2 class="short-hr-left">Stock Market Simulator</h2>
@@ -193,7 +197,7 @@
                 <div class="row text-center">
                     <div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team1.jpg" class="img-fluid team-img" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team1.jpg" class="img-fluid team-img" alt="teammember">
                             
                         </figure>
                         <p class="team-name">R.M.B.Senanayake</p>
@@ -201,7 +205,7 @@
                     </div>
                     <div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team2.jpg" class="img-fluid" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team2.jpg" class="img-fluid" alt="teammember">
                             
                         </figure>
                         <p class="team-name">R.M.A.P.Sandaru</p>
@@ -209,7 +213,7 @@
                     </div>
                     <div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team3.jpg" class="img-fluid" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team3.jpg" class="img-fluid" alt="teammember">
                            
                         </figure>
                         <p class="team-name">A.P.P.Perera</p>
@@ -217,7 +221,7 @@
                     </div>
                     <div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team4.jpg" class="img-fluid" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team4.jpg" class="img-fluid" alt="teammember">
                            
                         </figure>
                         <p class="team-name">D.U.C.Ranathunga</p>
@@ -225,14 +229,14 @@
                     </div>
 					<div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team5.jpg" class="img-fluid" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team5.jpg" class="img-fluid" alt="teammember">
                         </figure>
                         <p class="team-name">R.P.V.L.Madushanka</p>
                         <p class="subtle">Team Member</p>
                     </div>
 					<div class="col-md-3 team-card">
                         <figure>
-                            <img src="images/team6.jpg" class="img-fluid" alt="teammember">
+                            <img src="http://localhost:8080/view/images/team6.jpg" class="img-fluid" alt="teammember">
                         </figure>
                         <p class="team-name">E.M.M.Ekanayake</p>
                         <p class="subtle">Team Member</p>
@@ -373,15 +377,14 @@
         </div>
     </footer><!-- Footer End -->
     
-    <!-- //// SCRIPTS //// -->
-    <style><%@include file="js/jquery-3.2.1.min.js"%></style>
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/lightbox.min.js"></script>
-    <script src="js/validator.min.js"></script>
-    <script src="js/strider.js"></script>
+     <!-- //// SCRIPTS //// -->
+    <script src="http://localhost:8080/view/js/jquery-3.2.1.min.js"></script>
+    <script src="http://localhost:8080/view/js/popper.min.js"></script>
+    <script src="http://localhost:8080/view/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/view/js/particles.js"></script>
+    <script src="http://localhost:8080/view/js/isotope.pkgd.min.js"></script>
+    <script src="http://localhost:8080/view/js/lightbox.min.js"></script>
+    <script src="http://localhost:8080/view/js/validator.min.js"></script>
+    <script src="http://localhost:8080/view/js/strider.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64kJJiSynOc9ZqkNMOyl94cvsw5Z2uno"></script>
 </body>
