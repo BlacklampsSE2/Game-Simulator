@@ -1,5 +1,9 @@
 package stock_simulator.controllers;
 
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,12 +57,17 @@ public class PlayerConroller {
 	}
 	
 	@RequestMapping(value="/login-user")
-	public String loginuser(@ModelAttribute Player player,HttpServletRequest req)
+	public String loginuser(@ModelAttribute Player player,HttpServletRequest req,HttpSession httpSession)
 	{
 		System.out.println(player.getUsername());
 		System.out.println(player.getPassword());
 		if(playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword())!=null) {
 			System.out.println("Yes");
+			String caller=player.getUsername(); 
+			httpSession.setAttribute("invocationCount", 1 + Optional.ofNullable((Integer) httpSession.getAttribute("invocationCount")).orElse(0));
+	        httpSession.setAttribute("latestGreetingArgument", caller);
+	        System.out.println("S_ID"+httpSession.getId());
+			
 			return "index";
 		}
 		else {
