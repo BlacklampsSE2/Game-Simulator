@@ -155,10 +155,10 @@ public class AnalystController {
 
 		return emitter;
 	}
-	@GetMapping("/Test")
+	@GetMapping("/all")
 	public String Test() {
 		
-		return "index";
+		return "gameboard";
 	}
 
 }

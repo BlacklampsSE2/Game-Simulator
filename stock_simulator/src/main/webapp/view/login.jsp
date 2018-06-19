@@ -20,31 +20,33 @@
     <meta property="og:image" content="" /><!-- Image link (jpg only)-->
     <meta property="og:url" content="" /> <!--where do you want your post to link to-->
     <meta property="og:type" content="article" />
-<!-- Favicon and Apple Icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:8080/view/images/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="http://localhost:8080/view/images/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:8080/view/images/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="http://localhost:8080/view/images/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:8080/view/images/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="http://localhost:8080/view/images/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:8080/view/images/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://localhost:8080/view/images/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:8080/view/images/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="http://localhost:8080/view/images/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:8080/view/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="http://localhost:8080/view/images/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:8080/view/images/favicon/favicon-16x16.png">
-	 <!-- STYLES -->
+
+    <!-- Favicon and Apple Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+
+    <!-- STYLES -->
     <!-- Bootstrap -->
-    <link href="http://localhost:8080/view/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Main Stylesheet -->
-    <link href="http://localhost:8080/view/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- FontAwesome -->
-    <link href="http://localhost:8080/view/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
     <!-- Animations -->
-    <link href="http://localhost:8080/view/css/animations.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
     <!-- Lightbox -->
-    <link href="http://localhost:8080/view/css/lightbox.min.css" rel="stylesheet">
+    <link href="css/lightbox.min.css" rel="stylesheet">
   
 </head>
 <body>
@@ -59,7 +61,7 @@
             <div class="container">
 			<h3 class="loader-logo"><span class="colored">B</span>lacklamps</h3>
                 <!-- Site Logo -->
-               <!-- <a id="logo" class="navbar-brand" href="#"><img class="img-fluid" src="http://localhost:8080/view/images/logo.png" alt="site logo"></a>-->
+               <!-- <a id="logo" class="navbar-brand" href="#"><img class="img-fluid" src="images/logo.png" alt="site logo"></a>-->
                 <!-- Dropdown Button -->
                 <button id="hamburger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
@@ -107,7 +109,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you login credentials</p>
-                    <!--<img id="awards" src="http://localhost:8080/view/images/awards.png" class="img-fluid" alt="awads">-->
+                    <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
 
 					<form action="/login-user" method="POST">
 					<div class="form-group">
@@ -123,7 +125,7 @@
 			</div>
                 
                 <div class="col-md-6">
-                    <img id="support-image" src="http://localhost:8080/view/images/digital_collage.png" class="img-fluid" alt="digital collage">
+                    <img id="support-image" src="images/digital_collage.png" class="img-fluid" alt="digital collage">
                 </div>
 				
             </div>
@@ -142,7 +144,7 @@
               <div class="row">
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you desired login credentials</p>
-                    <!--<img id="awards" src="http://localhost:8080/view/images/awards.png" class="img-fluid" alt="awads">-->
+                    <!--<img id="awards" src="images/awards.png" class="img-fluid" alt="awads">-->
 					<form>
 					<div class="form-group">
 					<label for="usr">Player Name:</label>
@@ -159,7 +161,7 @@
 			</div>
                 
                 <div class="col-md-6">
-                    <img id="support-image" src="http://localhost:8080/view/images/digital_collage.png" class="img-fluid" alt="digital collage">
+                    <img id="support-image" src="images/digital_collage.png" class="img-fluid" alt="digital collage">
                 </div>
 				
             </div>
@@ -185,14 +187,14 @@
     </footer><!-- Footer End -->
     
     <!-- //// SCRIPTS //// -->
-    <script src="http://localhost:8080/view/js/jquery-3.2.1.min.js"></script>
-    <script src="http://localhost:8080/view/js/popper.min.js"></script>
-    <script src="http://localhost:8080/view/js/bootstrap.min.js"></script>
-    <script src="http://localhost:8080/view/js/particles.js"></script>
-    <script src="http://localhost:8080/view/js/isotope.pkgd.min.js"></script>
-    <script src="http://localhost:8080/view/js/lightbox.min.js"></script>
-    <script src="http://localhost:8080/view/js/validator.min.js"></script>
-    <script src="http://localhost:8080/view/js/strider.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/lightbox.min.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script src="js/strider.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64kJJiSynOc9ZqkNMOyl94cvsw5Z2uno"></script>
 </body>
 </html>
