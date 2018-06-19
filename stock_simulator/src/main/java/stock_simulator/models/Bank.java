@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+
+
 @Entity(name = "Bank")
 public class Bank {
 	@Id
@@ -14,6 +17,9 @@ public class Bank {
 	
 	private String Name;
 	private String Sector;
+	
+	
+	
 	
 	public int getId() {
 		return id;

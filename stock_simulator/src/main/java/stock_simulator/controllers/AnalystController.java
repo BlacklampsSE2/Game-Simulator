@@ -23,15 +23,23 @@ public class AnalystController {
 	int[] ET = new int[20];
 	String[] events = new String[20];
 	int[] Final = new int[20];
-	int length = 20;
+	int length = 200;
+	
+	
+	
+//
+//	public AnalystController(CompanyService companyService) {
+//		System.out.println("companyService creatted");
+//		this.companyService = companyService;
+//	}
 
 	public void getArrays() {
-		this.RT = companyService.RandomTrend();
-		this.MT = companyService.MarketTrend();
-		this.ST = companyService.SectorTrend();
-		this.ET = companyService.EventTrend();
-		this.events = companyService.GetEventsDetails();
-		this.Final = companyService.CalculateTrends();
+		this.RT = companyService.getRT();
+		this.MT = companyService.getMT();
+		this.ST = companyService.getST();
+		this.ET = companyService.getET();
+		this.events = companyService.getEvenets();
+		this.Final = companyService.getFinal();
 	}
 
 	@RequestMapping("/sseTest")
@@ -137,12 +145,13 @@ public class AnalystController {
 						emitter.send("The stock price might not change in the future for ");
 					}
 
-					Thread.sleep(2000);
-				} catch (IOException | InterruptedException e) {
+					Thread.sleep(200);
+				} catch (IOException | InterruptedException  e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					emitter.completeWithError(e);
-					return;
+				    emitter.completeWithError(e);
+				    break;
+				//	return;
 				}
 				System.out.println("----" + turn + "----");
 
@@ -162,16 +171,13 @@ public class AnalystController {
 	
 	@RequestMapping("/Newsfeed")
 	public SseEmitter handlenewsfeeds()  {
-		
+		int time=2000;
 		final SseEmitter emitter = new SseEmitter();
 		ExecutorService service = Executors.newSingleThreadExecutor();
 		service.execute(() -> {
 			for (int turn = 0; turn < this.length; turn++) {
-				try {
-					int time=20000;
-					
-							
-								if (turn == 0)
+				try {						
+					       if (turn == 0)
 									{
 										Thread.sleep(time);
 										continue;
@@ -3396,4 +3402,20 @@ public class AnalystController {
 	
 		return emitter;
 	}
+
+   
+	@RequestMapping("/trtest")
+	public void test()
+    {
+		getArrays();
+		for(int i=0;i<RT.length;i++)
+		{
+			System.out.println(RT[i]);
+		}
+		System.out.println("---------------------");
+    }
+
+
 }
+
+
