@@ -22,6 +22,7 @@ public class CompanyService {
 	public int[] ET = new int[20];
 	public String []Evenets=new String[20]; 
 	public int[] Final = new int[20];
+	public double[]FinalPrice=new double[20];
 
 
 	double Sector_length = 0.33;
@@ -39,6 +40,33 @@ public class CompanyService {
 		return companies;
 	}
 
+	public double[] calStkcmp()
+	{
+		List<CompanyService> companies = new ArrayList<CompanyService>();
+		Company company=findOne(2);
+		double price;
+		RandomTrend();
+		MarketTrend();
+		SectorTrend();
+		EventTrend();
+		CalculateTrends();
+		
+		price=company.getStock_Starting_Price();
+		FinalPrice[0]=price+((price*Final[0])/100);
+		
+		for(int i=1;i<Final.length;i++)
+			{
+				FinalPrice[i]=FinalPrice[i-1]+((FinalPrice[i-1]*Final[i])/100);
+			}
+		return FinalPrice;
+		
+	}
+	
+	public int[]getRand()
+	{
+		return RT;
+	}
+	
 	public void delete(int id) {
 		companyRepository.delete(id);
 	}
@@ -91,12 +119,12 @@ public class CompanyService {
 			}
 
 		}
-		for (int j = 0; j <ST.length; j++) {
-			System.out.println(j+" : "+ST[j]);
+//		for (int j = 0; j <ST.length; j++) {
+//			System.out.println(j+" : "+ST[j]);
+//			
+//			
 			
-			
-			
-		}
+//		}
 		return ST;
 	}
 
@@ -227,6 +255,34 @@ public class CompanyService {
 			Final[r]=RT[r]+MT[r]+ST[r]+ET[r];
 		}
 		return Final;
+	}
+
+	public int[] getRT() {
+		return RT;
+	}
+
+	public int[] getFinal() {
+		return Final;
+	}
+
+	public double[] getFinalPrice() {
+		return FinalPrice;
+	}
+
+	public int[] getMT() {
+		return MT;
+	}
+
+	public int[] getST() {
+		return ST;
+	}
+
+	public int[] getET() {
+		return ET;
+	}
+
+	public String[] getEvenets() {
+		return Evenets;
 	}
 
 

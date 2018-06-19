@@ -193,42 +193,10 @@
 												eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
 												startButton.disabled=true;
 											}										
-											</script>	
-											<script>
-											function myMove() {
-  											var elem = document.getElementById("comment");   
-  											var pos = 350;
-  											var id = setInterval(frame, 20);
-  											function frame() {
-    											if (pos == 0) {
-      												clearInterval(id);
-    											} else {
-      												pos--; 
-      												elem.style.top = pos + 'px'; 
-      
-    											}
-  												}
-											}
-</script>
-											
-											
-											
-											
-											
-											
+											</script>			
 											<script type="text/javascript">
 											start();
-											myMove();
 											</script>
-												
-												
-												
-												
-												
-												
-												
-												
-												
 										</div>
 									</form>
 								</div>
@@ -242,7 +210,19 @@
 									</div>
 									<form>
 										<div class="form-group">
-											<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: black; background-color: transparent;"></textarea>
+											<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
+												<script type="text/javascript">
+											function start(){
+												eventSource=new EventSource("/Newsfeed");
+												eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
+												eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
+												eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
+												startButton.disabled=true;
+											}										
+											</script>			
+											<script type="text/javascript">
+											//start();
+											</script>
 										</div>
 
 									</form>

@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
+import stock_simulator.models.Company;
 import stock_simulator.services.BankService;
+import stock_simulator.services.CompanyService;
 
 
 @RestController
 public class restController {
 
 	@Autowired
-	private BankService GameService;
+	private CompanyService GameService;
+	private AnalystController analystController;//=new AnalystController(GameService);
 	private int client_count=0;
 //	private CompanyService
 	
@@ -31,15 +34,22 @@ public class restController {
 	}
 	
 	@GetMapping("/findall")
-	public Collection<Bank> getAll(){
+	public double[] getAll(){
 		
-		return GameService.findAllBanks();
+		return GameService.calStkcmp();
+	}
+	
+	
+	@GetMapping("/findRT")
+	public int[] getRT(){
+		
+		return GameService.getRand();
 	}
 	
 	@GetMapping("/findall2")
 	public String save() {
 	System.out.println("Save");
-	GameService.test();
+	//GameService.test();
 	return "index";
 	}
 	
