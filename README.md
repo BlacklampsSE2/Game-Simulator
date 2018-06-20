@@ -19,3 +19,8 @@ Once you uploaded the project. You can load it by typing http://localhost:8080/l
 
 Or if you are a new user you can register with our game using the register tab.
 ![alt text](/stock_simulator/pic3.PNG "")
+
+Once logged in you will be prompted to the Main game page. You can view all you details on this page Portfolio, Game history etc.
+
+If you want to enter to an new game you can click on the GAME tab and navigate to the game section. And click the play now button to enter to an game.
+![alt text](/stock_simulator/pic4.PNG "")
