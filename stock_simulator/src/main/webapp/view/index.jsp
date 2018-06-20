@@ -161,8 +161,6 @@
                                 <img src="http://localhost:8080/view/images/game1.jpg" class="img-fluid" alt="aurora image">
                             </picture>
                         </a>
-                        <a href="http://localhost:8080/view/images/game1.1.jpg" data-lightbox="screenshots_aurora"></a>
-                        <a href="http://localhost:8080/view/images/game1.2.jpg" data-lightbox="screenshots_aurora"></a>
                     </div>
                     <div class="col-lg-12 col-xl-7 game-card-right">
                         <h2 class="short-hr-left">Stock Market Simulator</h2>

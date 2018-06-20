@@ -29,7 +29,7 @@ public class AnalystController {
 	
 //
 //	public AnalystController(CompanyService companyService) {
-//		System.out.println("companyService creatted");
+//		System.out.println("companyService created");
 //		this.companyService = companyService;
 //	}
 
@@ -145,7 +145,7 @@ public class AnalystController {
 						emitter.send("The stock price might not change in the future for ");
 					}
 
-					Thread.sleep(200);
+					Thread.sleep(20000);
 				} catch (IOException | InterruptedException  e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -171,7 +171,7 @@ public class AnalystController {
 	
 	@RequestMapping("/Newsfeed")
 	public SseEmitter handlenewsfeeds()  {
-		int time=2000;
+		int time=20000;
 		final SseEmitter emitter = new SseEmitter();
 		ExecutorService service = Executors.newSingleThreadExecutor();
 		service.execute(() -> {
