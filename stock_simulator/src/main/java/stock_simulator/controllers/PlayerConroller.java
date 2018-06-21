@@ -22,6 +22,8 @@ import stock_simulator.services.PlayerService;
 @SessionAttributes("name")
 public class PlayerConroller {
 
+	List<String> httpSessionList;
+
 	int count=0;
 
 	@Autowired
@@ -41,19 +43,30 @@ public class PlayerConroller {
 		return "index";
 	}
 
-	@RequestMapping(value = "/saveplayer", method = RequestMethod.POST)
+	@RequestMapping(value = "/register-user", method = RequestMethod.POST)
 	public String save(@ModelAttribute Player player, HttpServletRequest req) {
 		System.out.println("Save");
-		playerService.save(player);
-		req.setAttribute("players", playerService.findAllPlayers());
-		req.setAttribute("mode", "PLAYER_VIEW");
-		return "index";
+		if (playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword()) != null) {
+			System.out.println("Yes");
+
+			return "login";
+		} else {
+			System.out.println("No");
+			playerService.save(player);
+			return "register";
+		}
 	}
 
 	@GetMapping("/login")
 	public String login(HttpServletRequest request) {
 		request.setAttribute("mode", "MODE_LOGING");
 		return "login";
+	}
+
+	@GetMapping("/register")
+	public String register(HttpServletRequest request) {
+		request.setAttribute("mode", "MODE_REGISTER");
+		return "register";
 	}
 
 	@RequestMapping(value = "/login-user")
@@ -68,7 +81,6 @@ public class PlayerConroller {
 			httpSession.setAttribute("latestGreetingArgument", caller);
 			System.out.println("S_ID" + httpSession.getId());
 			count=count+1;
-
 			return "index";
 		} else {
 			System.out.println("No");
@@ -78,6 +90,7 @@ public class PlayerConroller {
 
 	@RequestMapping(value = "/playgame")
 	public String loginuser() {
+
 		if (count != 0) {
 			System.out.println("gameboards");
 			return "gameboard";
