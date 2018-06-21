@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html lang="en">
 
 <head>
@@ -106,6 +107,9 @@
 		<div id="particles-web"></div>
 
 	</div>
+	
+	
+		
 
 	<div class="container">
 		<div id="loginpage" class="large-margin">
@@ -146,11 +150,15 @@
 										</h1>
 
 									</div>
+									<div>
+									<c:choose>
+									<c:when test="${mode == 'STOCK_VIEW'}">
 									<table class="table table-striped">
 
 										<thead>
 											<tr>
 												<th>Company</th>
+												<th>Sector</th>
 												<th>Stock Price</th>
 												<th>Qty</th>
 												<th>Buy</th>
@@ -158,9 +166,10 @@
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach var="stocks" items="${companyStocks}">
 											<tr>
-												<td>John</td>
-												<td>Doe</td>
+												<td>${stocks.company_Name}</td>
+												<td>${stocks.sector_Name}</td>
 												<td><input type="text" class="form-control" id="usr"></td>
 												<td><p>
 														<button class="fa fa-shopping-cart" type="button"></button>
@@ -169,9 +178,11 @@
 														<button class="fa fa-shopping-cart" type="button"></button>
 													</p></td>
 											</tr>
-											</tr>
+											</c:forEach>
 										</tbody>
 									</table>
+									</c:when>
+									</c:choose>
 								</div>
 								<div class="column">
 									<div class="col-md-auto">

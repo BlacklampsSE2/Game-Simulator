@@ -1,22 +1,12 @@
 package stock_simulator.models;
 
+public class CompanyStocks {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity(name = "Company")
-public class Company {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int Comapany_Id;
+private int Comapany_Id;
 	
 	private String Company_Name;
 	private String Sector_Name;
-	private double Stock_Starting_Price;
-
+	private double[] Stock_price=new double[20];
 	public int getComapany_Id() {
 		return Comapany_Id;
 	}
@@ -35,11 +25,12 @@ public class Company {
 	public void setSector_Name(String sector_Name) {
 		Sector_Name = sector_Name;
 	}
-	public double getStock_Starting_Price() {
-		return Stock_Starting_Price;
-	}
-	public void setStock_Starting_Price(double stock_Starting_Price) {
-		Stock_Starting_Price = stock_Starting_Price;
-	}
 
+	public double[] getStock_price() {
+		return Stock_price;
+	}
+	public void setStock_price(double[] stock_price) {
+		Stock_price = stock_price;
+	} 
+	
 }
