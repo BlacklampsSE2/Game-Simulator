@@ -1,5 +1,6 @@
 package stock_simulator.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -21,68 +22,79 @@ import stock_simulator.services.PlayerService;
 @SessionAttributes("name")
 public class PlayerConroller {
 
+	List<String> httpSessionList;
+
 	@Autowired
 	private PlayerService playerService;
-	
+
 	@GetMapping("/getallplayers")
-	public String findAllPlayers(HttpServletRequest req)
-	{
+	public String findAllPlayers(HttpServletRequest req) {
 		req.setAttribute("banks", playerService.findAllPlayers());
 		req.setAttribute("mode", "PLAYER_VIEW");
 		return "index";
 	}
-	
+
 	@GetMapping("/updatePlayer")
-	public String updatePlayer(@RequestParam int id,HttpServletRequest req)
-	{
+	public String updatePlayer(@RequestParam int id, HttpServletRequest req) {
 		req.setAttribute("bank", playerService.findOne(id));
 		req.setAttribute("mode", "PLAYER_EDIT");
 		return "index";
 	}
-	
-	@RequestMapping(value="/saveplayer",method= RequestMethod.POST)
-	public String save(@ModelAttribute Player player,HttpServletRequest req) {
-	System.out.println("Save");
-	playerService.save(player);
-	req.setAttribute("players", playerService.findAllPlayers());
-	req.setAttribute("mode", "PLAYER_VIEW");
-	return "index";
+
+	@RequestMapping(value = "/register-user", method = RequestMethod.POST)
+	public String save(@ModelAttribute Player player, HttpServletRequest req) {
+		System.out.println("Save");
+		if (playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword()) != null) {
+			System.out.println("Yes");
+
+			return "login";
+		} else {
+			System.out.println("No");
+			playerService.save(player);
+			return "register";
+		}
 	}
-	
+
 	@GetMapping("/login")
-	public String login(HttpServletRequest request)
-	{
-		request.setAttribute("mode","MODE_LOGING");
+	public String login(HttpServletRequest request) {
+		request.setAttribute("mode", "MODE_LOGING");
 		return "login";
 	}
-	
-	@RequestMapping(value="/login-user")
-	public String loginuser(@ModelAttribute Player player,HttpServletRequest req,HttpSession httpSession)
-	{
+
+	@GetMapping("/register")
+	public String register(HttpServletRequest request) {
+		request.setAttribute("mode", "MODE_REGISTER");
+		return "register";
+	}
+
+	@RequestMapping(value = "/login-user")
+	public String loginuser(@ModelAttribute Player player, HttpServletRequest req, HttpSession httpSession) {
 		System.out.println(player.getUsername());
 		System.out.println(player.getPassword());
-		if(playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword())!=null) {
+		if (playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword()) != null) {
 			System.out.println("Yes");
-			String caller=player.getUsername(); 
-			httpSession.setAttribute("invocationCount", 1 + Optional.ofNullable((Integer) httpSession.getAttribute("invocationCount")).orElse(0));
-	        httpSession.setAttribute("latestGreetingArgument", caller);
-	        System.out.println("S_ID"+httpSession.getId());
-			
+			String caller = player.getUsername();
+			httpSession.setAttribute("invocationCount",
+					1 + Optional.ofNullable((Integer) httpSession.getAttribute("invocationCount")).orElse(0));
+			httpSession.setAttribute("latestGreetingArgument", caller);
+
+			System.out.println("S_ID" + httpSession.getId());
+
 			return "index";
-		}
-		else {
+		} else {
 			System.out.println("No");
 			return "login";
 		}
 	}
-	
-	@RequestMapping(value="/playgame")
-	public String loginuser()
-	{
+
+	@RequestMapping(value = "/playgame")
+	public String loginuser() {
+		if (httpSessionList.size() != 0) {
+			System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssssss");
+		}
+
 		System.out.println("gameboards");
 		return "gameboard";
 	}
-	
 
-	
 }
