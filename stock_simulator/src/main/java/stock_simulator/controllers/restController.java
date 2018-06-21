@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
 import stock_simulator.models.Company;
+import stock_simulator.models.CompanyStocks;
 import stock_simulator.services.BankService;
 import stock_simulator.services.CompanyService;
 
@@ -36,7 +37,7 @@ public class restController {
 	@GetMapping("/findall")
 	public double[] getAll(){
 		
-		return GameService.calStkcmp();
+		return GameService.calStkcmp(2);
 	}
 	
 	
@@ -51,6 +52,16 @@ public class restController {
 	System.out.println("Save");
 	//GameService.test();
 	return "index";
+	}
+	
+	@GetMapping("/findalltest")
+	public Collection<Company>getAllBanks(){
+		return GameService.findAllCompanies();
+	}
+	
+	@GetMapping("/findalll")
+	public Collection<CompanyStocks>getAllStocks(){
+		return GameService.findstocks();
 	}
 	
 	

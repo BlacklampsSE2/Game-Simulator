@@ -25,7 +25,7 @@ public class BankConroller {
 	{
 		req.setAttribute("banks", bankService.findAllBanks());
 		req.setAttribute("mode", "BANK_VIEW");
-		return "index";
+		return "NewFile";
 	}
 	
 	@GetMapping("/updateBank")
