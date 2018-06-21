@@ -1,5 +1,6 @@
 package stock_simulator.controllers;
 
+import java.awt.color.CMMException;
 import java.util.Collection;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,19 @@ public class CompanyConroller {
 		return companyService.findAllCompanies();
 	}
 	
+	@GetMapping("/game")
+	public String findAllBanks(HttpServletRequest req)
+	{
+		req.setAttribute("companyStocks", companyService.findstocks());
+		req.setAttribute("mode", "STOCK_VIEW");
+		return "NewFile";
+	}
+	
+	@GetMapping("/ga")
+	public String f()
+	{
+		
+		return "NewFile";
+	}
 	
 }
