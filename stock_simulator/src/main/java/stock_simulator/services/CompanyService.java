@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import stock_simulator.dao.CompanyRepository;
 import stock_simulator.models.Company;
+import stock_simulator.models.CompanyStocks;
 
 @Service
 public class CompanyService {
@@ -39,11 +40,60 @@ public class CompanyService {
 		}
 		return companies;
 	}
-
-	public double[] calStkcmp()
+    public Collection<CompanyStocks> findstocks()
+    {
+    	List<Company> companies = new ArrayList<Company>();
+    	List<CompanyStocks> companyStocks=new ArrayList<CompanyStocks>();
+    	//CompanyStocks stocks = new CompanyStocks();
+    	companies=(List<Company>) findAllCompanies();
+    	for(Company companyStocks1 : companies)
+    	{
+    		CompanyStocks stocks = new CompanyStocks();
+    		calStkcmp2(companyStocks1.getComapany_Id());
+    		stocks.setComapany_Id(companyStocks1.getComapany_Id());
+    		System.out.println(companyStocks1.getComapany_Id());
+    		stocks.setCompany_Name(companyStocks1.getCompany_Name());
+    		System.out.println(companyStocks1.getCompany_Name());
+    		stocks.setSector_Name(companyStocks1.getSector_Name());
+    		System.out.println(companyStocks1.getSector_Name());
+    		stocks.setStock_price(FinalPrice);
+    		companyStocks.add(stocks);
+    	}
+    	return  companyStocks;
+    	
+    }
+    
+    public void calStkcmp2(int id)
+	{
+    	System.out.println("****"+id+"****");
+		Company company=findOne(id);
+		double price;
+		RandomTrend();
+		MarketTrend();
+		SectorTrend();
+		EventTrend();
+		CalculateTrends();
+		
+		price=company.getStock_Starting_Price();
+		FinalPrice[0]=price+((price*Final[0])/100);
+		
+		for(int i=1;i<Final.length;i++)
+			{
+				FinalPrice[i]=FinalPrice[i-1]+((FinalPrice[i-1]*Final[i])/100);
+			}
+		
+	}
+    
+    
+    
+    
+    
+    
+    
+	public double[] calStkcmp(int id)
 	{
 		List<CompanyService> companies = new ArrayList<CompanyService>();
-		Company company=findOne(2);
+		Company company=findOne(id);
 		double price;
 		RandomTrend();
 		MarketTrend();

@@ -24,6 +24,8 @@ public class PlayerConroller {
 
 	List<String> httpSessionList;
 
+	int count=0;
+
 	@Autowired
 	private PlayerService playerService;
 
@@ -77,9 +79,8 @@ public class PlayerConroller {
 			httpSession.setAttribute("invocationCount",
 					1 + Optional.ofNullable((Integer) httpSession.getAttribute("invocationCount")).orElse(0));
 			httpSession.setAttribute("latestGreetingArgument", caller);
-
 			System.out.println("S_ID" + httpSession.getId());
-
+			count=count+1;
 			return "index";
 		} else {
 			System.out.println("No");
@@ -89,12 +90,16 @@ public class PlayerConroller {
 
 	@RequestMapping(value = "/playgame")
 	public String loginuser() {
-		if (httpSessionList.size() != 0) {
-			System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssssss");
-		}
 
-		System.out.println("gameboards");
-		return "gameboard";
+		if (count != 0) {
+			System.out.println("gameboards");
+			return "gameboard";
+		}
+		else {
+			
+			System.out.println("Need more players");
+		}
+		return "index";
 	}
 
 }
