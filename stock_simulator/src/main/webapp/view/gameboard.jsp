@@ -107,13 +107,8 @@
 		<div id="particles-web"></div>
 
 	</div>
-	
-	
-		
-
 	<div class="container">
 		<div id="loginpage" class="large-margin">
-
 			<div class="row heading tiny-margin">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
@@ -133,135 +128,112 @@
 					</h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<form>
-
-
-						<div class="container_my">
-							<!--<div class="box_1">-->
-
-							<div class="row">
-								<div class="column">
-
-									<div class="col-md-auto">
-										<h1 class="animation-element slide-down">
-											Company <span class="colored">Details</span>
-										</h1>
-
-									</div>
-									<div>
-									<c:choose>
-									<c:when test="${mode == 'STOCK_VIEW'}">
-									<table class="table table-striped">
-
-										<thead>
-											<tr>
-												<th>Company</th>
-												<th>Sector</th>
-												<th>Stock Price</th>
-												<th>Qty</th>
-												<th>Buy</th>
-												<th>Sell</th>
-											</tr>
-										</thead>
-										<tbody>
-										<c:forEach var="stocks" items="${companyStocks}">
-											<tr>
-												<td>${stocks.company_Name}</td>
-												<td>${stocks.sector_Name}</td>
-												<td><input type="text" class="form-control" id="usr"></td>
-												<td><p>
-														<button class="fa fa-shopping-cart" type="button"></button>
-													</p></td>
-												<td><p>
-														<button class="fa fa-shopping-cart" type="button"></button>
-													</p></td>
-											</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-									</c:when>
-									</c:choose>
-								</div>
-								<div class="column">
-									<div class="col-md-auto">
-										<h1 class="animation-element slide-down">
-											Rumo<span class="colored">urs</span>
-										</h1>
-									</div>
-									<form>
-										<div class="form-group">
-											<textarea id="comment" class="form-control" rows="10" 
-												cols="70"
-												style="color: white; background-color: transparent;"></textarea>
-												
-											<script type="text/javascript">
-											function start(){
-												eventSource=new EventSource("/sseTest");
-												eventSource.onopen=function(){comment.value+= 'Connected...'+'\n';};
-												eventSource.onmessage=function(message){comment.value+=message.data+'\n\n'};
-												eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
-												startButton.disabled=true;
-											}										
-											</script>			
-											<script type="text/javascript">
-											start();
-											</script>
-										</div>
-									</form>
-								</div>
-							</div>
-							<div class="row">
-								<div class="column">
-									<div class="col-md-auto">
-										<h1 class="animation-element slide-down">
-											News<span class="colored">Feed</span>
-										</h1>
-									</div>
-									<form>
-										<div class="form-group">
-											<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
-												<script type="text/javascript">
-											function start(){
-												eventSource=new EventSource("/Newsfeed");
-												eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
-												eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
-												eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
-												startButton.disabled=true;
-											}										
-											</script>			
-											<script type="text/javascript">
-											//start();
-											</script>
-										</div>
-
-									</form>
-
-								</div>
-							</div>
-
-
-						</div>
-
-
-
-
-
-					</form>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="col-md-auto">
+					<h1 class="animation-element slide-down">
+					Rumo<span class="colored">urs</span>
+					</h1>
 				</div>
+				<form>
+					<div class="form-group">
+						<textarea id="comment" class="form-control" rows="10" 
+						cols="70"
+						style="color: white; background-color: transparent;"></textarea>			
+						<script type="text/javascript">
+							function start(){
+								eventSource=new EventSource("/sseTest");
+								eventSource.onopen=function(){comment.value+= 'Connected...'+'\n';};
+								eventSource.onmessage=function(message){comment.value+=message.data+'\n\n'};
+								eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
+								startButton.disabled=true;
+								}										
+						</script>			
+						<script type="text/javascript">
+							start();
+						</script>
+					</div>
+				</form>
+				
+			</div>
+			<div class="column">
+				<div class="col-md-auto">
+					<h1 class="animation-element slide-down">
+					News<span class="colored">Feed</span>
+					</h1>
+				</div>
+				<form>
+					<div class="form-group">
+						<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
+						<script type="text/javascript">
+							function start(){
+								eventSource=new EventSource("/Newsfeed");
+								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
+								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
+								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
+								startButton.disabled=true;
+								}										
+						</script>			
+						<script type="text/javascript">
+							//start();
+						</script>
+					</div>
+
+				</form>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-auto">
+				<h1 class="animation-element slide-down">
+					Company <span class="colored">Details</span>
+				</h1>
 
-	</div>
+			</div>
+			<div>
+				<c:choose>
+					<c:when test="${mode == 'STOCK_VIEW'}">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Company</th>
+									<th>Sector</th>
+									<th>Stock Price</th>
+									<th>Qty</th>
+									<th>Buy</th>
+									<th>Sell</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="stocks" items="${companyStocks}">
+									<tr>
+										<td>${stocks.company_Name}</td>
+										<td>${stocks.sector_Name}</td>
+										<td><input type="text" class="form-control" id="usr"></td>
+										<td><p>
+										<button class="fa fa-shopping-cart" type="button"></button>
+										</p></td>
+										<td><p>
+										<button class="fa fa-shopping-cart" type="button"></button>
+										</p></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:when>
+				</c:choose>
+			
+			</div>
+		</div>
+	</div>	
+
 	<!-- /// FOOTER /// -->
 	<footer id="main-footer">
 		<div id="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<p id="copyright">© 2018 Stock Market Simulator. All rights
-							reserved | Design by Blacklamps</p>
+						<p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p>
 						<!-- Copyright Text -->
 						<ul class="social-links">
 							<!-- Social Media Icons -->
