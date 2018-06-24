@@ -126,6 +126,15 @@
 					<h2 align="right">
 						Turn: <span class="colored">5/20</span>
 					</h2>
+					<script>
+						var timeleft = 10;
+						var downloadTimer = setInterval(function(){
+					  	document.getElementById("progressBar").value = 10 - --timeleft;
+					  	if(timeleft <= 0)
+					    	clearInterval(downloadTimer);
+						},1000)
+					
+					</script>
 				</div>
 			</div>
 		</div>
@@ -233,8 +242,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
+
 						<p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p>
-						<!-- Copyright Text -->
+				<!-- Copyright Text -->
 						<ul class="social-links">
 							<!-- Social Media Icons -->
 							<li><a
