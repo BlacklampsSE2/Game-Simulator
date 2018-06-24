@@ -126,6 +126,15 @@
 					<h2 align="right">
 						Turn: <span class="colored">5/20</span>
 					</h2>
+					<script>
+						var timeleft = 10;
+						var downloadTimer = setInterval(function(){
+					  	document.getElementById("progressBar").value = 10 - --timeleft;
+					  	if(timeleft <= 0)
+					    	clearInterval(downloadTimer);
+						},1000)
+					
+					</script>
 				</div>
 			</div>
 		</div>
