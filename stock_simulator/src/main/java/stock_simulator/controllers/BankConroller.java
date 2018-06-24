@@ -11,37 +11,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import stock_simulator.models.Bank;
 import stock_simulator.services.BankService;
 
-
-
 @Controller
 public class BankConroller {
- 
+
 	@Autowired
 	private BankService bankService;
-	
-	
+
 	@GetMapping("/hesllo")
-	public String findAllBanks(HttpServletRequest req)
-	{
+	public String findAllBanks(HttpServletRequest req) {
 		req.setAttribute("banks", bankService.findAllBanks());
 		req.setAttribute("mode", "BANK_VIEW");
 		return "NewFile";
 	}
-	
+
 	@GetMapping("/updateBank")
-	public String updateBank(@RequestParam int id,HttpServletRequest req)
-	{
+	public String updateBank(@RequestParam int id, HttpServletRequest req) {
 		req.setAttribute("bank", bankService.findOne(id));
 		req.setAttribute("mode", "BANK_EDIT");
 		return "index";
 	}
-	
-	@RequestMapping(value="/save",method= RequestMethod.POST)
-	public String save(@ModelAttribute Bank bank,HttpServletRequest req) {
-	System.out.println("Save");
-	bankService.save(bank);
-	req.setAttribute("banks", bankService.findAllBanks());
-	req.setAttribute("mode", "BANK_VIEW");
-	return "index";
+
+	@RequestMapping(value = "/bankSave", method = RequestMethod.POST)
+	public String save(@ModelAttribute Bank bank, HttpServletRequest req) {
+		System.out.println("Save");
+		bankService.save(bank);
+		req.setAttribute("banks", bankService.findAllBanks());
+		req.setAttribute("mode", "BANK_VIEW");
+		return "index";
 	}
+
+	
+
 }
