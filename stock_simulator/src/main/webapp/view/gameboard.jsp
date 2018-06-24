@@ -242,8 +242,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p>
-						<!-- Copyright Text -->
+
+						<p id="copyright">Â© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p>
+				<!-- Copyright Text -->
 						<ul class="social-links">
 							<!-- Social Media Icons -->
 							<li><a
