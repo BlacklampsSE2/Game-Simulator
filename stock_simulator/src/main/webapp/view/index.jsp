@@ -304,12 +304,12 @@
 					  </tr>
 					</thead>
 					<tbody>
-					  <c:forEach var="portfolio" items="${portfolios}">
+					  <c:forEach var="tran" items="${trans}">
 						<tr>
-							<td>${portfolio.Timestamp}</td>
-							<td>${portfolio.Game_Status}</td>
-							<td>${portfolio.Timestamp}</td>
-							<td>${portfolio.Game_Status}</td>
+							<td>${tran.player_Name}</td>
+							<td>${tran.company_Name}</td>
+							<td>${tran.stock_Price}</td>
+							<td>${tran.stock_Price}</td>
 			        	</tr>
 					  </c:forEach>
 					</tbody>
@@ -332,7 +332,7 @@
             </div>
 			
 			 <c:choose>
-				<c:when test="${mode == 'GAMEHISTORY_VIEW'}">
+				<c:when test="${mode == 'GAME_VIEW'}">
 			
 				<table class="table table-striped">
 
@@ -343,10 +343,10 @@
 					  </tr>
 					</thead>
 					<tbody>
-					  <c:forEach var="bank" items="${banks}">
+					  <c:forEach var="game" items="${games}">
 						<tr>
-							<td>${bank.Timestamp}</td>
-							<td>${bank.Game_Status}</td>
+							<td>${game.player_Name}</td>
+							<td>${game.player_Rank}</td>
 			        	</tr>
 					  </c:forEach>
 					</tbody>

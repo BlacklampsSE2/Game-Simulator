@@ -1,5 +1,7 @@
 package stock_simulator.controllers;
 
+import java.util.Collection;
+
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import stock_simulator.models.Bank;
+import stock_simulator.models.Transactions;
 import stock_simulator.services.BankService;
 
 
@@ -44,4 +47,8 @@ public class BankConroller {
 	req.setAttribute("mode", "BANK_VIEW");
 	return "index";
 	}
+	
+	
+	
+
 }

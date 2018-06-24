@@ -11,48 +11,88 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+ 
+	
 <title>Stock Market</title>
+
+
+<script>
+var turn=0;
+var noTurns=20;
+var turnTimes;
+var response;
+
+	
+	
+function getStockMarketDetailFromService() {
+	
+	
+	 var xhttp = new XMLHttpRequest();
+	    xhttp.open("GET", "/getMarketPricesTest", false);
+	    xhttp.setRequestHeader("Content-type", "application/json");
+	    xhttp.send();
+	    response = JSON.parse(xhttp.responseText);
+	  //  noTurns=response.noTurns;
+	    //turnTimes=response.turnTime;
+	    
+	  // document.getElementById("demop").innerHTML=response[0].FinalPrice;
+	    
+	    loop();
+	   //
+	   
+	   
+}
+
+function loop(){	
+	var table = document.getElementById("demoTable");	
+	
+	for (var i = 0; i < 2; i++) {
+		 
+		  
+		 var row = table.insertRow(i);
+		 var cell1 = row.insertCell(0);
+		 var cell2 = row.insertCell(1); 		
+		
+		 cell1.innerHTML = response[i].company_Name;
+		    cell2.innerHTML = response[i].FinalPrice[i];
+		
+	    }   
+	 	
+	 
+	
+	   
+} 
+
+
+</script>
+
+
+
+
+
+
 </head>
-<body>
-
-	<div class="container">
-		<c:choose>
-			<c:when test="${mode == 'STOCK_VIEW'}">
-			<table class="table" id="tb1">
-					<thead>
-						<tr>
-							<th>Banks</th>
-							<th>Sector</th>
-							<th>Edit</th>
-						</tr>
-					</thead>
-			</table>
-				<c:forEach var="stocks" items="${companyStocks}">
-					<c:forEach begin="0" end="19" step="1" varStatus="loop">
-						<c:set var="myTest" value="${loop.count}"/>
-						<script>
-						function insertData() {
-							var table = document.getElementById("tb1");
-							var row = table.insertRow(1);
-							 var cell1 = row.insertCell(0);
-							 var cell2 = row.insertCell(1);
-							
-							<%=pageContext.getAttribute("myTest") %>;
-						}
-						
-						</script>
-						<script>
-						insertData();
-						</script>
-					</c:forEach>
-				</c:forEach>
-
-			</c:when>
+<body  onload="getStockMarketDetailFromService()">
 
 
-		</c:choose>
 
-	</div>
+<table class="table table-stripped table-bordered">
+			<thead>
+				<tr>
+					<th>Buy message</th>
+					<th>Sell Price</th>
+				</tr>
+
+			</thead>
+			<tbody id="demoTable">
+
+			</tbody>
+		</table>
+
+
+
 
 </body>
 </html>

@@ -2,50 +2,35 @@ package stock_simulator.controllers;
 
 import java.util.Collection;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import stock_simulator.models.Bank;
-import stock_simulator.models.Company;
 import stock_simulator.models.CompanyStocks;
+import stock_simulator.models.Transactions;
 import stock_simulator.services.BankService;
 import stock_simulator.services.CompanyService;
+import stock_simulator.services.GameService;
+import stock_simulator.services.TransactionsService;
+
 
 
 @RestController
 public class restController {
 
 	@Autowired
-	private CompanyService GameService;
-	private AnalystController analystController;//=new AnalystController(GameService);
-	private int client_count=0;
+	 CompanyService companyService=new CompanyService();
+	private BankService bankss;
 //	private CompanyService
 	
 	@GetMapping(value="/")
 	public String hello()
 	{
-		client_count++;
-		System.out.println(client_count);
-		return "Hello";
+		return "index";
 	}
-	
-	@GetMapping("/findall")
-	public double[] getAll(){
-		
-		return GameService.calStkcmp(2);
-	}
-	
-	
-	@GetMapping("/findRT")
-	public int[] getRT(){
-		
-		return GameService.getRand();
-	}
+
 	
 	@GetMapping("/findall2")
 	public String save() {
@@ -53,15 +38,18 @@ public class restController {
 	//GameService.test();
 	return "index";
 	}
+
 	
-	@GetMapping("/findalltest")
-	public Collection<Company>getAllBanks(){
-		return GameService.findAllCompanies();
-	}
 	
-	@GetMapping("/findalll")
-	public Collection<CompanyStocks>getAllStocks(){
-		return GameService.findstocks();
+	@GetMapping("/getMarketPricesTest")
+	 public Collection<CompanyStocks> getStokMarketSharsPricesTest() {
+	  return companyService.findstocks();
+	  
+	 }
+
+	@GetMapping("/findalllbnk")
+	public Collection<Bank> getAllStocks(){
+		return bankss.findAllBanks();
 	}
 	
 	
