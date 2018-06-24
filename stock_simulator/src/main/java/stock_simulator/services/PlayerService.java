@@ -43,7 +43,8 @@ public class PlayerService {
 	}
 	
 	public Player findByUsernameAndPassword(String username,String password)
-	{
+	{	
+		System.out.println(playerRepository.findByUsernameAndPassword(username, password));
 		return playerRepository.findByUsernameAndPassword(username, password);
 	}
 }

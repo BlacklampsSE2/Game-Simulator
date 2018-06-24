@@ -61,15 +61,19 @@
 
 <!-- STYLES -->
 <!-- Bootstrap -->
-<link href="http://localhost:8080/view/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://localhost:8080/view/css/bootstrap.min.css"
+	rel="stylesheet">
 <!-- Main Stylesheet -->
 <link href="http://localhost:8080/view/css/style.css" rel="stylesheet">
 <!-- FontAwesome -->
-<link href="http://localhost:8080/view/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost:8080/view/css/font-awesome.min.css"
+	rel="stylesheet">
 <!-- Animations -->
-<link href="http://localhost:8080/view/css/animations.css" rel="stylesheet">
+<link href="http://localhost:8080/view/css/animations.css"
+	rel="stylesheet">
 <!-- Lightbox -->
-<link href="http://localhost:8080/view/css/lightbox.min.css" rel="stylesheet">
+<link href="http://localhost:8080/view/css/lightbox.min.css"
+	rel="stylesheet">
 
 </head>
 <body>
@@ -121,11 +125,37 @@
 						Cash: <span class="colored">Rs.100</span>
 					</h2>
 					<h2 align="right">
-						Time: <span class="colored">00:12</span>
+						Time: <span class="colored" id="demo"></span>
 					</h2>
 					<h2 align="right">
-						Turn: <span class="colored">5/20</span>
+						Turn: <span class="colored" id="turn">5/20</span>
 					</h2>
+
+					<script type="text/javascript">
+						var timeleft = 20;
+						var downloadTimer = setInterval(
+								function() {
+									timeleft--;
+									document.getElementById("demo").textContent = timeleft;
+									if (timeleft <= 0)
+										clearInterval(downloadTimer);
+								}, 1000);
+					</script>
+
+					<script type="text/javascript">
+						var turnleft = 20;
+						var turnTimer = setInterval(
+								function() {
+									turnleft--;
+									document.getElementById("turn").textContent = turnleft;
+									if (turnleft <= 0)
+										clearInterval(turnTimer);
+								}, 20000);
+					</script>
+
+
+
+
 				</div>
 			</div>
 		</div>
@@ -133,48 +163,61 @@
 			<div class="column">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
-					Rumo<span class="colored">urs</span>
+						Rumo<span class="colored">urs</span>
 					</h1>
 				</div>
 				<form>
 					<div class="form-group">
-						<textarea id="comment" class="form-control" rows="10" 
-						cols="70"
-						style="color: white; background-color: transparent;"></textarea>			
+						<textarea id="comment" class="form-control" rows="10" cols="70"
+							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
-							function start(){
-								eventSource=new EventSource("/sseTest");
-								eventSource.onopen=function(){comment.value+= 'Connected...'+'\n';};
-								eventSource.onmessage=function(message){comment.value+=message.data+'\n\n'};
-								eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
-								startButton.disabled=true;
-								}										
-						</script>			
+							function start() {
+								eventSource = new EventSource("/sseTest");
+								eventSource.onopen = function() {
+									comment.value += 'Connected...' + '\n';
+								};
+								eventSource.onmessage = function(message) {
+									comment.value += message.data + '\n\n'
+								};
+								eventSource.onerror = function() {
+									comment.value += 'Error Occured...' + '\n'
+								};
+								startButton.disabled = true;
+							}
+						</script>
 						<script type="text/javascript">
 							start();
 						</script>
 					</div>
 				</form>
-				
+
 			</div>
 			<div class="column">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
-					News<span class="colored">Feed</span>
+						News<span class="colored">Feed</span>
 					</h1>
 				</div>
 				<form>
 					<div class="form-group">
-						<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
+						<textarea id="newsfeed" class="form-control" readonly="readonly"
+							rows="10" cols="70"
+							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
-							function start(){
-								eventSource=new EventSource("/Newsfeed");
-								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
-								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
-								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
-								startButton.disabled=true;
-								}										
-						</script>			
+							function start() {
+								eventSource = new EventSource("/Newsfeed");
+								eventSource.onopen = function() {
+									newsfeed.value += 'Connected...' + '\n';
+								};
+								eventSource.onmessage = function(message) {
+									newsfeed.value += message.data + '\n\n'
+								};
+								eventSource.onerror = function() {
+									newsfeed.value += 'Error Occured...' + '\n'
+								};
+								startButton.disabled = true;
+							}
+						</script>
 						<script type="text/javascript">
 							//start();
 						</script>
@@ -211,21 +254,21 @@
 										<td>${stocks.sector_Name}</td>
 										<td><input type="text" class="form-control" id="usr"></td>
 										<td><p>
-										<button class="fa fa-shopping-cart" type="button"></button>
-										</p></td>
+												<button class="fa fa-shopping-cart" type="button"></button>
+											</p></td>
 										<td><p>
-										<button class="fa fa-shopping-cart" type="button"></button>
-										</p></td>
+												<button class="fa fa-shopping-cart" type="button"></button>
+											</p></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</c:when>
 				</c:choose>
-			
+
 			</div>
 		</div>
-	</div>	
+	</div>
 
 	<!-- /// FOOTER /// -->
 	<footer id="main-footer">
@@ -233,7 +276,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<p id="copyright">© 2018 Stock Market Simulator. All rights reserved | Design by Blacklamps</p>
+						<p id="copyright">© 2018 Stock Market Simulator. All rights
+							reserved | Design by Blacklamps</p>
 						<!-- Copyright Text -->
 						<ul class="social-links">
 							<!-- Social Media Icons -->
@@ -249,15 +293,16 @@
 	</footer>
 	<!-- Footer End -->
 
- <!-- //// SCRIPTS //// -->
-    <script src="http://localhost:8080/view/js/jquery-3.2.1.min.js"></script>
-    <script src="http://localhost:8080/view/js/popper.min.js"></script>
-    <script src="http://localhost:8080/view/js/bootstrap.min.js"></script>
-    <script src="http://localhost:8080/view/js/particles.js"></script>
-    <script src="http://localhost:8080/view/js/isotope.pkgd.min.js"></script>
-    <script src="http://localhost:8080/view/js/lightbox.min.js"></script>
-    <script src="http://localhost:8080/view/js/validator.min.js"></script>
-    <script src="http://localhost:8080/view/js/strider.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64kJJiSynOc9ZqkNMOyl94cvsw5Z2uno"></script>
+	<!-- //// SCRIPTS //// -->
+	<script src="http://localhost:8080/view/js/jquery-3.2.1.min.js"></script>
+	<script src="http://localhost:8080/view/js/popper.min.js"></script>
+	<script src="http://localhost:8080/view/js/bootstrap.min.js"></script>
+	<script src="http://localhost:8080/view/js/particles.js"></script>
+	<script src="http://localhost:8080/view/js/isotope.pkgd.min.js"></script>
+	<script src="http://localhost:8080/view/js/lightbox.min.js"></script>
+	<script src="http://localhost:8080/view/js/validator.min.js"></script>
+	<script src="http://localhost:8080/view/js/strider.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB64kJJiSynOc9ZqkNMOyl94cvsw5Z2uno"></script>
 </body>
 </html>

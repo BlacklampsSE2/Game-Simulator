@@ -15,19 +15,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import stock_simulator.models.Bank;
 import stock_simulator.models.Player;
+import stock_simulator.services.BankService;
 import stock_simulator.services.PlayerService;
 
 @Controller
 @SessionAttributes("name")
 public class PlayerConroller {
 
-	List<String> httpSessionList;
-
-	int count=0;
+	public String[][] sesscount = new String[5][2];
+	String counts;
+	int count;
 
 	@Autowired
 	private PlayerService playerService;
+	List<String> httpSessionList;
+
+	@Autowired
+	private BankService bankService;
+
+	@Autowired
+	BankConroller bankController;
 
 	@GetMapping("/getallplayers")
 	public String findAllPlayers(HttpServletRequest req) {
@@ -51,9 +60,15 @@ public class PlayerConroller {
 
 			return "login";
 		} else {
-			System.out.println("No");
+			System.out.println(player.getUsername());
+			Bank bank = new Bank();
+
+			bank.setName(player.getUsername());
+			bank.setAcc_Bal(1000);
+			bankService.save(bank);
 			playerService.save(player);
-			return "register";
+
+			return "login";
 		}
 	}
 
@@ -63,24 +78,39 @@ public class PlayerConroller {
 		return "login";
 	}
 
-	@GetMapping("/register")
-	public String register(HttpServletRequest request) {
-		request.setAttribute("mode", "MODE_REGISTER");
-		return "register";
-	}
+	/*
+	 * @GetMapping("/register") public String register(HttpServletRequest request) {
+	 * request.setAttribute("mode", "MODE_REGISTER"); return "register"; }
+	 */
 
 	@RequestMapping(value = "/login-user")
-	public String loginuser(@ModelAttribute Player player, HttpServletRequest req, HttpSession httpSession) {
+	public String loginuser(@ModelAttribute Player player, HttpServletRequest req) {
+
 		System.out.println(player.getUsername());
 		System.out.println(player.getPassword());
 		if (playerService.findByUsernameAndPassword(player.getUsername(), player.getPassword()) != null) {
 			System.out.println("Yes");
-			String caller = player.getUsername();
-			httpSession.setAttribute("invocationCount",
-					1 + Optional.ofNullable((Integer) httpSession.getAttribute("invocationCount")).orElse(0));
-			httpSession.setAttribute("latestGreetingArgument", caller);
-			System.out.println("S_ID" + httpSession.getId());
-			count=count+1;
+
+			for (int i = 0; i <= 4; i++) {
+				for (int j = 0; j <= 1; j++) {
+					if (sesscount[i][j] == null && sesscount[i][j + 1] == null) {
+						System.out.println(req.getRequestedSessionId());
+						sesscount[i][j] = req.getRequestedSessionId();
+						sesscount[i][j + 1] = player.getUsername();
+						System.out.println(player.getUsername());
+						counts = "added";
+						count++;
+						break;
+					}
+
+				}
+				if (counts == "added") {
+					counts = "not";
+					break;
+
+				}
+			}
+
 			return "index";
 		} else {
 			System.out.println("No");
@@ -89,14 +119,20 @@ public class PlayerConroller {
 	}
 
 	@RequestMapping(value = "/playgame")
-	public String loginuser() {
+	public String loginuser(HttpServletRequest req) {
 
 		if (count != 0) {
+			for (int i = 0; i <= 4; i++) {
+				for (int j = 0; j <= 1; j++) {
+					if (sesscount[i][j] != null) {
+						System.out.println(sesscount[i][j]);
+					}
+				}
+			}
 			System.out.println("gameboards");
 			return "gameboard";
-		}
-		else {
-			
+		} else {
+
 			System.out.println("Need more players");
 		}
 		return "index";

@@ -145,16 +145,17 @@
                 <div class="col-md-6">
                     <p class="small-margin">Please enter you desired login credentials</p>
                     <!--<img id="awards" src="http://localhost:8080/view/images/awards.png" class="img-fluid" alt="awads">-->
-					<form>
+					<form id="player" action="/register-user" method="POST">
 					<div class="form-group">
 					<label for="usr">Player Name:</label>
-					<input type="text" class="form-control" id="usr">
+					<input type="text" class="form-control" name="username" value="${player.username}" form="player"/>
+					
 					</div>
 					<div class="form-group">
 					<label for="usr">Password:</label>
-					<input type="text" class="form-control" id="usr">
+					<input type="password" class="form-control" id="password">
 					<label for="usr">Confirm Password:</label>
-					<input type="text" class="form-control" id="usr">
+					<input type="password" class="form-control" name="password" value="${player.password}">
 					<button type="submit" id="form-signup" class="button">Signup</button>
 					</div>
 					</form>
