@@ -24,3 +24,4 @@ Once logged in you will be prompted to the Main game page. You can view all you 
 
 If you want to enter to an new game you can click on the GAME tab and navigate to the game section. And click the play now button to enter to an game.
 ![alt text](/stock_simulator/pic4.PNG "")
+If no human player exist other than you, you will be automatically be assigned with two Non-Human Players since minimum player count is three. 
