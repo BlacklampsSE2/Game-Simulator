@@ -36,7 +36,7 @@ public class BankConroller {
 		System.out.println("Save");
 		bankService.save(bank);
 		req.setAttribute("banks", bankService.findAllBanks());
-		req.setAttribute("mode", "BANK_VIEW");
+		//req.setAttribute("mode", "BANK_VIEW");
 		return "index";
 	}
 
