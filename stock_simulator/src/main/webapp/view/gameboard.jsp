@@ -575,7 +575,7 @@ function loop(){
 							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
 							function start(){
-								eventSource=new EventSource("/Newsfeed");
+								eventSource=new EventSource("/Newsfeeds");
 								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
 								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
 								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
@@ -603,7 +603,7 @@ function loop(){
 							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
 							function start(){
-								eventSource=new EventSource("/sseTest");
+								eventSource=new EventSource("/Rumours");
 								eventSource.onopen=function(){comment.value+= 'Connected...'+'\n';};
 								eventSource.onmessage=function(message){comment.value+=message.data+'\n\n'};
 								eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
