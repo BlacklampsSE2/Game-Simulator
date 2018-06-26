@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import stock_simulator.models.Bank;
+import stock_simulator.models.CompanyStocks;
 import stock_simulator.models.Player;
+import stock_simulator.services.AIPlayerService;
 import stock_simulator.services.BankService;
+import stock_simulator.services.CompanyService;
 import stock_simulator.services.PlayerService;
 
 @Controller
@@ -37,6 +40,9 @@ public class PlayerConroller {
 
 	@Autowired
 	BankConroller bankController;
+
+	@Autowired
+	CompanyService companyService = new CompanyService();
 
 	@GetMapping("/getallplayers")
 	public String findAllPlayers(HttpServletRequest req) {
@@ -121,21 +127,37 @@ public class PlayerConroller {
 	@RequestMapping(value = "/playgame")
 	public String loginuser(HttpServletRequest req) {
 
-		if (count != 0) {
-			for (int i = 0; i <= 4; i++) {
-				for (int j = 0; j <= 1; j++) {
-					if (sesscount[i][j] != null) {
-						System.out.println(sesscount[i][j]);
-					}
-				}
-			}
+		List<CompanyStocks> stkList = (List<CompanyStocks>) companyService.findstocks();
+
+		if (count == 3 || count > 3) {
 			System.out.println("gameboards");
 			return "gameboard";
-		} else {
-
-			System.out.println("Need more players");
 		}
+
+		else if (count == 1) {
+			AIPlayerService bobby = new AIPlayerService();
+			AIPlayerService alice = new AIPlayerService();
+
+			bobby.setName("bobby");
+			alice.setName("alice");
+
+			try {
+				// bobby.setCompanyStockList(stkList);
+				bobby.AICAL(stkList);
+				// alice.setCompanyStockList(stkList);
+				alice.AICAL(stkList);
+
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+
+			return "gameboard";
+		} else if (count == 2) {
+			// create 1 AI
+			return "gameboard";
+		}
+
 		return "index";
 	}
-
 }
