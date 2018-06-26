@@ -90,6 +90,9 @@
 						 <li class="nav-item">
                             <a class="nav-link" href="#markethistory">Market History</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/view/login.jsp">Log Out</a>
+                        </li>
                     </ul>
                 </div>
             </div>

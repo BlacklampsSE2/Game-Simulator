@@ -421,10 +421,12 @@ function loop(){
 	    }
 	
 	 setTimeout(function () {          
+
 	      turn++; 
 	      dTurns++;
 	      if(dTurns<=20){
 	      document.getElementById("tc").textContent=dTurns+"/20"; }
+
 	      if (turn < noTurns) {
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
@@ -530,6 +532,7 @@ function loop(){
 						SCROLL DOWN <span class="colored">FOR ACTION</span>
 					</h1>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -617,6 +620,7 @@ function loop(){
 			
 		</div>
 		<div class="row">
+
 			<table class="table table-striped center">
 				<thead>
 					<tr>
@@ -629,6 +633,7 @@ function loop(){
 
 				</tbody>
 			</table>
+
 
 		</div>
 	</div>
