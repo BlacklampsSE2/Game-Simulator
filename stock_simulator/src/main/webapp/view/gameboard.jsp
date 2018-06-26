@@ -86,7 +86,7 @@ function getStockMarketDetailFromService() {
 function loop(){	
 	var table = document.getElementById("demoTable"),rIndex;	
 	
-	for (var i = 0; i < 2; i++) {
+	for (var i = 0; i < 10; i++) {
 		 
 		  
 		 var row = table.insertRow(i);
@@ -310,14 +310,14 @@ function loop(){
 	      if (turn < noTurns) {
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
-	    	  /*table.deleteRow(0);
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
-	    	  table.deleteRow(0);*/
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
 	    	  timeUp();
 	    		
 	    	  loop();
@@ -398,7 +398,9 @@ function loop(){
         <div id="particles-web"></div>
         <div class="row hero-unit">
             <div class="container">
-               
+                <div class="hero-caption"><!-- Main Tagline -->
+                    <h1>SCROLL DOWN <span class="colored">FOR ACTION</span></h1>
+                </div>
             </div>
         </div>
     </div>
@@ -426,23 +428,31 @@ function loop(){
 		</div>
 		<div class="row">
 			<div class="column">
-			 	<div>
-			 		<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Comapny Name</th>
-								<th>Stock Value</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody id="demoTable">
+			 <div class="col-md-auto">
+					<h1 class="animation-element slide-down">
+					News<span class="colored">Feed</span>
+					</h1>
+				</div>
+				<form>
+					<div class="form-group">
+						<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
+						<script type="text/javascript">
+							function start(){
+								eventSource=new EventSource("/Newsfeed");
+								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
+								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
+								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
+								startButton.disabled=true;
+								}										
+						</script>			
+						<script type="text/javascript">
+							//start();
+						</script>
+					</div>
 
-						</tbody>
-					</table>
-			 	</div>
-			</div>		
-		</div>
-		<div class="row">
+				</form>
+			</div>	
+
 			<div class="column">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
@@ -470,31 +480,30 @@ function loop(){
 				</form>
 				
 			</div>
-			<div class="column">
-				<div class="col-md-auto">
-					<h1 class="animation-element slide-down">
-					News<span class="colored">Feed</span>
-					</h1>
-				</div>
-				<form>
-					<div class="form-group">
-						<textarea id="newsfeed" class="form-control" readonly="readonly" rows="10" cols="70" style="color: white; background-color: transparent;"></textarea>
-						<script type="text/javascript">
-							function start(){
-								eventSource=new EventSource("/Newsfeed");
-								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
-								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
-								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
-								startButton.disabled=true;
-								}										
-						</script>			
-						<script type="text/javascript">
-							//start();
-						</script>
-					</div>
 
-				</form>
-			</div>
+			
+		</div>
+		<div class="row">
+			
+			
+		<div>
+			 		<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Company Name</th>
+								<th>Stock Value</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="demoTable">
+
+						</tbody>
+					</table>
+			 	</div>
+
+			
+			
+			
 		</div>
 	</div>
 	
