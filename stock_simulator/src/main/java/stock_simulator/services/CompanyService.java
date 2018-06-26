@@ -17,13 +17,7 @@ import stock_simulator.models.CompanyStocks;
 public class CompanyService {
 
 	Company company_Obj = new Company();
-	CompanyStocks CompanyStocks_obj=new CompanyStocks();
-	
-
-
-
-	
-	
+	public CompanyStocks CompanyStocks_obj=new CompanyStocks();
 	@Autowired
 	private CompanyRepository companyRepository;
 	
@@ -54,7 +48,6 @@ public class CompanyService {
     	}
     	//CompanyStocks_obj=(CompanyStocks) companyStocks;
     	return  companyStocks;
-    	
     }
     
     
