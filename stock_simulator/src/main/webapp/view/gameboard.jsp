@@ -59,6 +59,7 @@
 <script>
 var turn=0;
 var noTurns=20;
+var dTurns=1;
 var turnTimes;
 var response;
 
@@ -305,8 +306,10 @@ function loop(){
 	    }
 	
 	 setTimeout(function () {          
-	      turn++;                     
-	      document.getElementById("tc").textContent=turn+"/20"; 
+	      turn++; 
+	      dTurns++;
+	      if(dTurns<=20){
+	      document.getElementById("tc").textContent=dTurns+"/20"; }
 	      if (turn < noTurns) {
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
@@ -328,7 +331,7 @@ function loop(){
 	      
 	      
 	
-	}, 10000)
+	}, 20000)
 	 	
 	
 	function timeUp()
@@ -418,10 +421,10 @@ function loop(){
 						Cash: <span class="colored">Rs.100</span>
 					</h2>
 					<h2 align="right">
-						Time: 00 : <span id="timer" class="colored"></span>
+						Time: 00 : <span id="timer" class="colored">20</span>
 					</h2>
 					<h2 align="right">
-						Turn: <span class="colored" id="tc"></span>
+						Turn: <span class="colored" id="tc">1/20</span>
 					</h2>
 				</div>
 	
@@ -487,7 +490,7 @@ function loop(){
 			
 			
 		<div>
-			 		<table class="table table-striped">
+			 		<table class="table table-striped" align="center">
 						<thead>
 							<tr>
 								<th>Company Name</th>
