@@ -159,7 +159,7 @@
 								class="form-control" name="username" value="${player.username}">
 						</div>
 						<div class="form-group">
-							<label for="usr">Password:</label> <input type="text"
+							<label for="usr">Password:</label> <input type="password"
 								class="form-control" name="password" value="${player.password}">
 							<button type="submit" id="form-signup" class="button">Login</button>
 						</div>
@@ -193,14 +193,15 @@
 					<p class="small-margin">Please enter you desired login
 						credentials</p>
 					<!--<img id="awards" src="http://localhost:8080/view/images/awards.png" class="img-fluid" alt="awads">-->
-					<form>
+						<form action="/register-user" method="POST">
 						<div class="form-group">
-							<label for="usr">Player Name:</label> <input type="text"
-								class="form-control" id="usr">
+							<label for="usr">Name:</label> <input type="text"
+								class="form-control" name="username" value="${player.username}">
 						</div>
 						<div class="form-group">
-							<label for="usr">Password:</label>  
-							 <input type="password" class="form-control" id="usr">
+							<label for="usr">Password:</label> <input type="password"
+							class="form-control" name="password" value="${player.password}"> 
+							 
 							
 							<button type="submit" class="button" onclick="getElementById('formreg').innerHTML = myFunction()">Signup</button>
 						</div>

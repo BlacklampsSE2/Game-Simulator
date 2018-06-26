@@ -167,8 +167,14 @@
                         
                         <p class="game-description">To play this game you need a minimum of 3 players. If no human players are joined you will be automatically be assigned with AI players. So Enjoy our Simulator..........</p>
                         <form action="/playgame" method="POST">
-                        <button type="submit" id="form-signup" class="button">Play Game</button>
+                        <button type="submit" class="button" onclick="getElementById('formreg').innerHTML = myFunction()">Play Game</button>
+					
                         <div id="msgSignup" class="h3 text-center hidden"></div>
+                        <script>
+							function myFunction() {
+								alert("Waiting for Human Players for one minute!!!");
+							}
+					</script>
                     </form>
                     </div>
                     <!-- Modal -->
