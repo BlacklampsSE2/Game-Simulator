@@ -11,7 +11,8 @@ This is a multiplayer game. The game is regarding the Stock Market. It simulates
 6. SSE (Server Sent Events)
 
 ## How to install
-First you should configure the Database its (stock_market_sim.sql) and then you should upload it to PHPMYADMIN. We have written the code which has PHPMYADMIN username=root password=root. And then you can import our project using an IDE. Since we used a MAVEN project all the dependencies are automatically updated, once you import the project. The project will load to localhost.
+First you should configure the Database its (stock_market_sim.sql) and then you should upload it to PHPMYADMIN. The database should be named "stock_market_sim". We have written the code which has PHPMYADMIN username=root password=root in the application.properties. And then you can import our project using an IDE. Since we used a MAVEN project all the dependencies are automatically updated, once you import the project. The project will load to localhost.
+Note:Without password connection is not working so we have configured a password root
 
 ## How to use
 Once you uploaded the project. You can load it by typing http://localhost:8080/login then the login page will be prompted as seen below.
