@@ -21,7 +21,7 @@ public class CompanyService {
 	@Autowired
 	private CompanyRepository companyRepository;
 	
-	
+	private List<CompanyStocks> companyStocks=new ArrayList<CompanyStocks>();
 
 	public Collection<Company> findAllCompanies() {
 		List<Company> companies = new ArrayList<Company>();
@@ -33,7 +33,6 @@ public class CompanyService {
     public Collection<CompanyStocks> findstocks()
     {
     	List<Company> companies = new ArrayList<Company>();
-    	List<CompanyStocks> companyStocks=new ArrayList<CompanyStocks>();
     	//CompanyStocks stocks = new CompanyStocks();
     	companies=(List<Company>) findAllCompanies();
     	for(Company companyStocks1 : companies)
@@ -50,7 +49,10 @@ public class CompanyService {
     	return  companyStocks;
     }
     
-    
+    public Collection<CompanyStocks> getTheAr()
+    {
+    	return  companyStocks;
+    }
 
 	
 	public void delete(int id) {
