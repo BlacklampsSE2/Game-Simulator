@@ -4,36 +4,46 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import stock_simulator.dao.GameRepository;
-import stock_simulator.models.Game;
-
+import stock_simulator.dao.PlayerRepository;
+import stock_simulator.models.Player;
 
 @Service
-public class GameService {
+@Transactional
+
+public class PlayerService {
 	@Autowired
-	private GameRepository gameRepository;
-
-	public Collection<Game> findAllGames() {
-		List<Game> games = new ArrayList<Game>();
-		for (Game game : gameRepository.findAll()) {
-			games.add(game);
+	private PlayerRepository playerRepository;
+	
+	public Collection<Player>findAllPlayers(){
+		List<Player>players=new ArrayList<Player>();
+		for(Player player:playerRepository.findAll()) {
+			players.add(player);
 		}
-		return games;
+		return players;
 	}
-
-	public void delete(int id) {
-		gameRepository.delete(id);
+	
+	public void delete(int id)
+	{
+		playerRepository.delete(id);
 	}
-
-	public Game findOne(int id) {
-		return gameRepository.findOne(id);
+	
+	public Player findOne(int id)
+	{
+		return playerRepository.findOne(id);
 	}
-
-	public void save(Game game) {
-		gameRepository.save(game);
+	
+	public void save(Player player)
+	{
+		playerRepository.save(player);
+	}
+	
+	public Player findByUsernameAndPassword(String username,String password)
+	{
+		return playerRepository.findByUsernameAndPassword(username, password);
 	}
 }
