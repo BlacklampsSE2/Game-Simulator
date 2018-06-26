@@ -306,10 +306,9 @@ function loop(){
 	    }
 	
 	 setTimeout(function () {          
-	      turn++; 
-	      dTurns++;
-	      if(dTurns<=20){
-	      document.getElementById("tc").textContent=dTurns+"/20"; }
+
+	      turn++;                     
+	      document.getElementById("tc").textContent=turn+"/20";
 	      if (turn < noTurns) {
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
@@ -421,10 +420,12 @@ function loop(){
 						Cash: <span class="colored">Rs.100</span>
 					</h2>
 					<h2 align="right">
-						Time: 00 : <span id="timer" class="colored">20</span>
+
+						Time: 00 : <span id="timer" class="colored"></span>
 					</h2>
 					<h2 align="right">
-						Turn: <span class="colored" id="tc">1/20</span>
+						Turn: <span class="colored" id="tc"></span>
+
 					</h2>
 				</div>
 	
@@ -490,7 +491,9 @@ function loop(){
 			
 			
 		<div>
-			 		<table class="table table-striped" align="center">
+
+			 		<table class="table table-striped">
+
 						<thead>
 							<tr>
 								<th>Company Name</th>
