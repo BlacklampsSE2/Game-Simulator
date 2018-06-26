@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import stock_simulator.models.Company;
+import stock_simulator.models.CompanyStocks;
 import stock_simulator.services.CompanyService;
 
 @Controller
@@ -18,6 +19,7 @@ public class CompanyConroller {
 
 	@Autowired
 	private CompanyService companyService;
+	
 	@GetMapping("/findallcmp")
 	public String findAllCompanies(HttpServletRequest req)
 	{
@@ -57,11 +59,6 @@ public class CompanyConroller {
 		return "NewFile";
 	}
 	
-	@GetMapping("/ga")
-	public String f()
-	{
-		
-		return "NewFile";
-	}
+	
 	
 }
