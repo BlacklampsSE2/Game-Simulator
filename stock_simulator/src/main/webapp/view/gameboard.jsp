@@ -593,6 +593,7 @@ function loop(){
 						Rumo<span class="colored">urs</span>
 					</h1>
 				</div>
+				
 				<form>
 					<div class="form-group">
 						<textarea id="comment" class="form-control" rows="10" cols="70"
@@ -611,6 +612,9 @@ function loop(){
 						</script>
 					</div>
 				</form>
+				
+				
+				
 
 			</div>
 
