@@ -70,7 +70,7 @@ public class PlayerConroller {
 			Bank bank = new Bank();
 
 			bank.setName(player.getUsername());
-			bank.setAcc_Bal(1000);
+			bank.setAccbal(1000);
 			bankService.save(bank);
 			playerService.save(player);
 
