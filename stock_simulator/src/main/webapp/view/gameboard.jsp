@@ -93,6 +93,7 @@ function loop(){
 		 var cell1 = row.insertCell(0);
 		 var cell2 = row.insertCell(1);
 		 var cell4 = row.insertCell(2);
+		 //var cell5=row.insertCell(3);
 		 
 		 var txtBox = document.createElement("INPUT");
 		 txtBox.setAttribute("type", "text");
@@ -101,6 +102,17 @@ function loop(){
 		 var btn_sell = document.createElement("BUTTON");
 		 var buy_text = document.createTextNode("Buy");
 		 var sell_text = document.createTextNode("Sell");
+		 
+		 
+		/* var Qtys={}; 
+		 
+		  Qtys.company=response[i].company_Name;
+		  Qtys.player="Snookie"
+		   var ablqty2=new XMLHttpRequest();
+		   ablqty2.open("POST", "http://localhost:8080/getAblStk", false);
+		   ablqty2.setRequestHeader('Content-type','application/json; charset=utf-8');
+		   var json2=JSON.stringify(Qtys);
+		   ablqty2.send(json2);*/
 		 
 		
 		 btn_buy.onclick = function() { // Note this is a function
@@ -156,7 +168,9 @@ function loop(){
 		  						    }
 		  						  var json=JSON.stringify(data);
 		  						xhttp2.send(json);
-		  							  
+		  						
+		  						//cell4.innerHTML=cell4.innerHTML+data.qty;
+		  						//console.log(cell4.innerHTML+data.qty);
 		  						    swal("Poof! Your Stocks has been Brought!", {
 		  						      icon: "success",
 		  						    });
@@ -235,12 +249,10 @@ function loop(){
   						    xhttp2.setRequestHeader('Content-type','application/json; charset=utf-8');
   						    xhttp2.onload = function () {
   						    	if (xhttp2.readyState == 4 && xhttp2.status == 200) {
-  						    		console.log(xhttp2.readyState);
-  						    		console.log(xhttp2.status);
+  						    	
   						    		console.log("ok")
   						    	} else {
-  						    		console.log(xhttp2.readyState);
-  						    		console.log(xhttp2.status);
+  						    		
   						    		console.log("not ok");
   						    		
   						    	}
@@ -248,10 +260,7 @@ function loop(){
   						  var jsonstk=JSON.stringify(stock);
   						xhttp2.send(jsonstk);
   							  
-  							  
-  							  
-  							  
-  							  
+  						//cell4.innerHTML=cell4.innerHTML-stock.qty;
   						    swal("Poof! Your Stocks has been Sold!", {
   						      icon: "success",
   						    });
@@ -274,6 +283,7 @@ function loop(){
 				    
 		  };
 		  
+		  timeUp();
 		 cell1.innerHTML = response[i].company_Name;
 		 cell2.innerHTML = response[i].FinalPrice[turn];
 		 
@@ -288,6 +298,7 @@ function loop(){
 		 btn_buy.setAttribute("class", "btn btn-info");//style=;
 		 btn_buy.setAttribute("style", "margin:5px;padding:5px 10px");
 		 
+		// cell5.innerHTML=ablqty2.responseText;
 		 
 		 
 		 
@@ -295,16 +306,50 @@ function loop(){
 	
 	 setTimeout(function () {          
 	      turn++;                     
-	      if (turn < noTurns) {           
-	    	       
+	      document.getElementById("tc").textContent=turn+"/20"; 
+	      if (turn < noTurns) {
 	    	  table.deleteRow(0);
 	    	  table.deleteRow(0);
-	  
-	    	  loop();             
-	      }                        
+	    	  /*table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);
+	    	  table.deleteRow(0);*/
+	    	  timeUp();
+	    		
+	    	  loop();
+	    	  
+	    	  
+	      }
+	      
+	      
+	      
 	
 	}, 10000)
 	 	
+	
+	function timeUp()
+	 {var timeleft = 20;
+	    var downloadTimer = setInterval(function(){
+	        timeleft--;
+	        if(timeleft<10)
+	        	{
+	        	document.getElementById("timer").textContent = "0"+timeleft;
+	        	}
+	        else
+	        	{
+	        	document.getElementById("timer").textContent = timeleft;
+	        	}
+	        
+	        if(timeleft <= 0)
+	            clearInterval(downloadTimer);
+	      },1000);
+	 }
+	
+	
 	function save()
 	 {
 		 document.getElementById("demo").innerHTML = "Hello World";
@@ -371,10 +416,10 @@ function loop(){
 						Cash: <span class="colored">Rs.100</span>
 					</h2>
 					<h2 align="right">
-						Time: <span class="colored">00:12</span>
+						Time: 00 : <span id="timer" class="colored"></span>
 					</h2>
 					<h2 align="right">
-						Turn: <span class="colored">5/20</span>
+						Turn: <span class="colored" id="tc"></span>
 					</h2>
 				</div>
 	
