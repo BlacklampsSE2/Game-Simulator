@@ -99,7 +99,7 @@ public class AIPlayerService {
 		{
 			Random buysell = new Random();
 			for (int i = 0; i <= 20; i++) {
-				int bs = buysell.nextInt(1 + 1 + 0) + 0;
+				int bs = buysell.nextInt(1) + 0;
 				if (i == 20) {
 					return cashbal;
 
@@ -1943,12 +1943,13 @@ public class AIPlayerService {
 				}
 
 			}
-		} else if (wl == 0)// loss AI)
+		} 
+		else if (wl == 0)// loss AI)
 		{
 
 			Random buysell = new Random();
 			for (int i = 0; i <= 20; i++) {
-				int bs = buysell.nextInt(1 + 1 + 0) + 0;
+				int bs = buysell.nextInt(1) + 0;
 				if (i == 20) {
 					// return karana value eka
 
@@ -1964,7 +1965,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final1[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final1");
 							cashbal = cashbal - (Final1[i] * quantity);
 							Thread.sleep(time);
@@ -1974,7 +1974,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final2[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final2");
 							cashbal = cashbal - (Final2[i] * quantity);
 							Thread.sleep(time);
@@ -1984,7 +1983,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final3[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final3");
 							cashbal = cashbal - (Final3[i] * quantity);
 							Thread.sleep(time);
@@ -1994,7 +1992,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final4[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final4");
 							cashbal = cashbal - (Final4[i] * quantity);
 							Thread.sleep(time);
@@ -2004,7 +2001,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final5[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final5");
 							cashbal = cashbal - (Final5[i] * quantity);
 							Thread.sleep(time);
@@ -2016,7 +2012,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final6[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final6");
 							cashbal = cashbal - (Final6[i] * quantity);
 							Thread.sleep(time);
@@ -2026,7 +2021,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final7[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final7");
 							cashbal = cashbal - (Final7[i] * quantity);
 							Thread.sleep(time);
@@ -2036,7 +2030,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final8[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final8");
 							cashbal = cashbal - (Final8[i] * quantity);
 							Thread.sleep(time);
@@ -2046,7 +2039,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final9[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final9");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -2103,7 +2095,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final6[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final6");
 							cashbal = cashbal - (Final6[i] * quantity);
 							Thread.sleep(time);
@@ -2315,7 +2306,6 @@ public class AIPlayerService {
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final9[i] <= cashbal) {
 							company[0] = company[0] + quantity;
-							;
 							System.out.println("BUY Final9");
 							cashbal = cashbal - (Final9[i] * quantity);
 							Thread.sleep(time);
