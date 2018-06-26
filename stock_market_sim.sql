@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2018 at 09:47 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: Jun 27, 2018 at 12:42 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,8 +31,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `bank` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
-  `Acc_Bal` int(10) NOT NULL
+  `Accbal` float(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`id`, `Name`, `Accbal`) VALUES
+(2, 'mad', 978);
 
 -- --------------------------------------------------------
 
@@ -52,16 +59,16 @@ CREATE TABLE `company` (
 --
 
 INSERT INTO `company` (`Comapany_Id`, `Company_Name`, `Sector_Name`, `Stock_Starting_Price`) VALUES
-(1, 'HNB', 'Finance', '12'),
-(3, 'IBM', 'IT', '14'),
-(4, 'Google', 'Technology', '50'),
-(5, 'Amazon', 'Ecommerce', '25'),
-(6, 'Toyota', 'Automobile', '20'),
-(7, 'ebay', 'Home', '10'),
-(8, 'Nissan', 'Cars', '30'),
-(9, 'Twitter', 'Social', '25'),
-(10, 'Mitsubishi', 'Automobile', '30'),
-(11, 'Facebook', 'Social', '15');
+(1, 'HNB', 'AA', '12'),
+(3, 'IBM', 'bb', '14'),
+(4, 'Google', 'aa', '50'),
+(5, 'Amazon', 'cc', '25'),
+(6, 'Toyota', 'dd', '20'),
+(7, 'ebay', 'cc', '10'),
+(8, 'Nissan', 'dd', '30'),
+(9, 'Twitter', 'ee', '25'),
+(10, 'Mitsubishi', 'dd', '30'),
+(11, 'Facebook', 'ee', '15');
 
 -- --------------------------------------------------------
 
@@ -95,7 +102,8 @@ CREATE TABLE `game` (
 
 INSERT INTO `game` (`Game_ID`, `Player_Name`, `Player_Rank`, `Timestamp`) VALUES
 (1, 'Snookie', 1, '2018-05-29 09:51:17'),
-(2, 'Ruvi', 2, '2018-05-29 09:51:17');
+(2, 'Ruvi', 2, '2018-05-29 09:51:17'),
+(3, 'Mashi', 3, '2018-05-29 09:52:51');
 
 -- --------------------------------------------------------
 
@@ -153,6 +161,66 @@ CREATE TABLE `transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `Player`, `Buy`, `Company`, `Qty`, `Price`) VALUES
+(52, 'Snookie', 1, 'HNB', 23, 12.84),
+(53, 'Snookie', 0, 'HNB', 10, 12.6),
+(54, 'Snookie', 1, 'HNB', 10, 12.84),
+(55, 'Snookie', 0, 'HNB', 23, 13.48),
+(56, 'Snookie', 1, 'HNB', 10, 12.72),
+(57, 'Snookie', 0, 'HNB', 10, 11.76),
+(58, 'Snookie', 1, 'HNB', 10, 11.52),
+(59, 'Snookie', 0, 'HNB', 5, 11.17),
+(60, 'Snookie', 1, 'HNB', 10, 12.24),
+(61, 'Snookie', 0, 'HNB', 10, 12.36),
+(62, 'Snookie', 1, 'Google', 20, 51.51),
+(63, 'Snookie', 1, 'Amazon', 10, 18.48),
+(64, 'Snookie', 0, 'Amazon', 10, 17.19),
+(65, 'Snookie', 1, 'Amazon', 20, 17.19),
+(66, 'Snookie', 0, 'Amazon', 10, 17.19),
+(67, 'Snookie', 0, 'Amazon', 10, 15.99),
+(68, 'Snookie', 1, 'HNB', 10, 12.36),
+(69, 'Snookie', 1, 'HNB', 10, 12.12),
+(70, 'Snookie', 1, 'HNB', 10, 12),
+(71, 'Snookie', 1, 'HNB', 10, 11.28),
+(72, 'Snookie', 1, 'HNB', 10, 11.16),
+(73, 'Snookie', 1, 'HNB', 10, 11.64),
+(74, 'Snookie', 1, 'HNB', 10, 12.24),
+(75, 'Snookie', 1, 'HNB', 10, 12.72),
+(76, 'Snookie', 1, 'HNB', 10, 12.36),
+(77, 'Snookie', 1, 'HNB', 10, 12.84),
+(78, 'Snookie', 1, 'HNB', 10, 12.24),
+(79, 'Snookie', 1, 'HNB', 100, 13.1),
+(80, 'Snookie', 1, 'HNB', 1000, 12.12),
+(81, 'Snookie', 1, 'HNB', 1000, 11.16),
+(82, 'Snookie', 1, 'HNB', 5, 10.38),
+(83, 'Snookie', 1, 'HNB', 5, 12),
+(84, 'Snookie', 0, 'HNB', 1000, 11.64),
+(85, 'Snookie', 0, 'HNB', 5, 11.75),
+(86, 'Snookie', 0, 'HNB', 100, 11.52),
+(87, 'Snookie', 1, 'HNB', 1, 11.29),
+(88, 'Snookie', 0, 'HNB', 5, 11.29),
+(89, 'Snookie', 0, 'Google', 2, 52),
+(90, 'Snookie', 0, 'HNB', 2, 11.76),
+(91, 'Snookie', 0, 'HNB', 1, 13.08),
+(92, 'Snookie', 0, 'HNB', 2, 12),
+(93, 'Snookie', 1, 'HNB', 2, 12),
+(94, 'Snookie', 0, 'HNB', 1, 12),
+(95, 'Snookie', 0, 'Google', 2, 50),
+(96, 'Snookie', 0, 'HNB', 2, 10.8),
+(97, 'Snookie', 0, 'HNB', 2, 10.8),
+(98, 'Snookie', 0, 'HNB', 1, 9.54),
+(99, 'Snookie', 0, 'HNB', 1, 12.24),
+(100, 'Snookie', 0, 'HNB', 1, 11.4),
+(101, 'Snookie', 0, 'HNB', 1, 12.24),
+(102, 'Snookie', 0, 'HNB', 2, 11.88),
+(103, 'Snookie', 0, 'HNB', 1, 11.88),
+(104, 'Snookie', 0, 'HNB', 1, 12.83),
+(105, 'Snookie', 0, 'HNB', 2, 11.88);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -206,7 +274,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -230,7 +298,7 @@ ALTER TABLE `player`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
