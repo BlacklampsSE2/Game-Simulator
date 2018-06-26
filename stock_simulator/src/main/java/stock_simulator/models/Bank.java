@@ -11,31 +11,35 @@ public class Bank {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	private String Name;
-	private int Acc_Bal;
+	private String name;
+	private double accbal;
 
-	public int getId() {
-		return id;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getAccbal() {
+		return accbal;
+	}
+
+	public void setAccbal(double accbal) {
+		this.accbal = accbal;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return Name;
+	public int getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		Name = name;
-	}
+	
 
-	public int getAcc_Bal() {
-		return Acc_Bal;
-	}
-
-	public void setAcc_Bal(int acc_Bal) {
-		Acc_Bal = acc_Bal;
-	}
+	
 
 }
