@@ -263,7 +263,9 @@ private int Comapany_Id;
 		
 		for(int i=1;i<Final.length;i++)
 			{
-				FinalPrice[i]=FinalPrice[i-1]+((FinalPrice[i-1]*Final[i])/100);
+			 FinalPrice[i]=FinalPrice[i-1]+((FinalPrice[i-1]*Final[i])/100);
+			 FinalPrice[i] = Math.round(FinalPrice[i] * 100.0) / 100.0;
+			
 			}
 		
 	
