@@ -1,20 +1,32 @@
 package stock_simulator.services;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import stock_simulator.models.CompanyStocks;
 
-
 public class AIPlayerService {
-	
 
-	
 	private String name;
 	
+	@Autowired
+	CompanyService companyService = new CompanyService();
 	
 	
+	//Collection<CompanyStocks> companyStockList = new ArrayList<CompanyStocks>();
+	//Collection<CompanyStocks> companyStockList;
+	
+
+	/*public void setCompanyStockList(Collection<CompanyStocks> companyStockList) {
+		this.companyStockList = companyStockList;
+	}
+*/
+	
+
 	public String getName() {
 		return name;
 	}
@@ -23,47 +35,80 @@ public class AIPlayerService {
 		this.name = name;
 	}
 
-	CompanyStocks comp0 = new CompanyStocks();
-	CompanyStocks comp1 = new CompanyStocks();
-	CompanyStocks comp2 = new CompanyStocks();
-	CompanyStocks comp3 = new CompanyStocks();
-	CompanyStocks comp4 = new CompanyStocks();
-	CompanyStocks comp5 = new CompanyStocks();
-	CompanyStocks comp6 = new CompanyStocks();
-	CompanyStocks comp7 = new CompanyStocks();
-	CompanyStocks comp8 = new CompanyStocks();
-	CompanyStocks comp9 = new CompanyStocks();
 	
-	
-	private double [] Final0 = comp0.getStock_price();  //IBM
-	private double [] Final1 = comp1.getStock_price();	//google	
-	private double [] Final2 = comp2.getStock_price();	//toyota
-	private double [] Final3 = comp3.getStock_price();	//nissan
-	private double [] Final4 = comp4.getStock_price();	//mitsubishi
-	private double [] Final5 = comp5.getStock_price();	//amazon
-	private double [] Final6 = comp6.getStock_price();	//ebay
-	private double [] Final7 = comp7.getStock_price();	//twitter
-	private double [] Final8 = comp8.getStock_price();	//facebook
-	private double [] Final9 = comp9.getStock_price();	//hnb
-	
-	
-	int temp=0;
-	int sellqty=0;
-	int [] company = new int [10];	
-	double cashbal=0;
+
+	private double[] Final0;
+	private double[] Final1;
+	private double[] Final2;
+	private double[] Final3;
+	private double[] Final4;
+	private double[] Final5;
+	private double[] Final6;
+	private double[] Final7;
+	private double[] Final8;
+	private double[] Final9;
+
+	int temp = 0;
+	int sellqty = 0;
+	int[] company = new int[10];
+	public double cashbal = 1000;
 	int quantity;
-	
-		public void AICAL() throws InterruptedException {
+
+	public double AICAL(List<CompanyStocks> stkList) throws InterruptedException {
+		
+		//companyStockList = companyService.getTheAr();
+		
+		for (CompanyStocks companyStocks : stkList) {
+			if (companyStocks.getCompany_Name().equals("HNB")) {
+				Final0 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("IBM")) {
+				Final1 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Google")) {
+				Final2 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Amazon")) {
+				Final3 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Toyota")) {
+				Final4 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("ebay")) {
+				Final5 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Nissan")) {
+				Final6 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Twitter")) {
+				Final7 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Mitsubishi")) {
+				Final8 = companyStocks.getFinalPrice();
+			}
+			if (companyStocks.getCompany_Name().equals("Facebook")) {
+				Final9 = companyStocks.getFinalPrice();
+			}
+		}
+
 		Random winloss = new Random();
 		int wl = winloss.nextInt(1 + 1 + 0) + 0;
 		int time = 200;
-		
+
 		if (wl == 1)// win AI
 		{
 			Random buysell = new Random();
-			for (int i = 0; i <= 19; i++) {
+			for (int i = 0; i <= 20; i++) {
 				int bs = buysell.nextInt(1 + 1 + 0) + 0;
-				if (bs == 1)// buy
+				if (i == 20) {
+					return cashbal;
+
+				}
+				if (i == 20) {
+					break;
+				}
+
+				else if (bs == 1)// buy
 				{
 
 					// final0
@@ -80,7 +125,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -89,7 +135,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -98,7 +145,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -107,7 +155,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -118,7 +167,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -127,7 +177,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -136,7 +187,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -145,7 +197,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final0[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -201,7 +254,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final1[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final1");
 							cashbal = cashbal - (Final1[i] * quantity);
 							Thread.sleep(time);
@@ -412,7 +466,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final3[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final3");
 							cashbal = cashbal - (Final3[i] * quantity);
 							Thread.sleep(time);
@@ -1886,17 +1941,20 @@ public class AIPlayerService {
 						}
 					}
 				}
+
 			}
 		} else if (wl == 0)// loss AI)
 		{
-			
-
-			
-			
 
 			Random buysell = new Random();
-			for (int i = 0; i <= 19; i++) {
+			for (int i = 0; i <= 20; i++) {
 				int bs = buysell.nextInt(1 + 1 + 0) + 0;
+				if (i == 20) {
+					// return karana value eka
+
+					break;
+				}
+
 				if (bs == 1)// buy
 				{
 
@@ -1905,7 +1963,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final1[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final1");
 							cashbal = cashbal - (Final1[i] * quantity);
 							Thread.sleep(time);
@@ -1914,7 +1973,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final2[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final2");
 							cashbal = cashbal - (Final2[i] * quantity);
 							Thread.sleep(time);
@@ -1923,7 +1983,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final3[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final3");
 							cashbal = cashbal - (Final3[i] * quantity);
 							Thread.sleep(time);
@@ -1932,7 +1993,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final4[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final4");
 							cashbal = cashbal - (Final4[i] * quantity);
 							Thread.sleep(time);
@@ -1941,7 +2003,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final5[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final5");
 							cashbal = cashbal - (Final5[i] * quantity);
 							Thread.sleep(time);
@@ -1952,7 +2015,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final6[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final6");
 							cashbal = cashbal - (Final6[i] * quantity);
 							Thread.sleep(time);
@@ -1961,7 +2025,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final7[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final7");
 							cashbal = cashbal - (Final7[i] * quantity);
 							Thread.sleep(time);
@@ -1970,7 +2035,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final8[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final8");
 							cashbal = cashbal - (Final8[i] * quantity);
 							Thread.sleep(time);
@@ -1979,7 +2045,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final9[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final9");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
@@ -2035,7 +2102,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final6[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final6");
 							cashbal = cashbal - (Final6[i] * quantity);
 							Thread.sleep(time);
@@ -2246,7 +2314,8 @@ public class AIPlayerService {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final9[i] <= cashbal) {
-							company[0] = company[0] + quantity;;
+							company[0] = company[0] + quantity;
+							;
 							System.out.println("BUY Final9");
 							cashbal = cashbal - (Final9[i] * quantity);
 							Thread.sleep(time);
@@ -2473,7 +2542,7 @@ public class AIPlayerService {
 						if (quantity * Final4[i] <= cashbal) {
 							company[6] = company[6] + quantity;
 							System.out.println("BUY Final4");
-							cashbal = cashbal - (Final4[i] * quantity);			
+							cashbal = cashbal - (Final4[i] * quantity);
 							Thread.sleep(time);
 						}
 					} else if (Final6[i] > Final5[i]) {
@@ -2609,31 +2678,25 @@ public class AIPlayerService {
 						}
 					}
 					// final8
-					else if (Final8[i] > Final0[i]) 
-					{
+					else if (Final8[i] > Final0[i]) {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
-						if (quantity * Final0[i] <= cashbal)
-						{
+						if (quantity * Final0[i] <= cashbal) {
 							company[8] = company[8] + quantity;
 							System.out.println("BUY Final0");
 							cashbal = cashbal - (Final0[i] * quantity);
 							Thread.sleep(time);
 						}
-					} 
-					else if (Final8[i] > Final1[i])
-					{
+					} else if (Final8[i] > Final1[i]) {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
-						if (quantity * Final1[i] <= cashbal) 
-						{
+						if (quantity * Final1[i] <= cashbal) {
 							company[8] = company[8] + quantity;
 							System.out.println("BUY Final1");
 							cashbal = cashbal - (Final1[i] * quantity);
 							Thread.sleep(time);
 						}
-					} 
-					else if (Final8[i] > Final2[i]) {
+					} else if (Final8[i] > Final2[i]) {
 						Random amount = new Random();
 						quantity = amount.nextInt(100) + 1;
 						if (quantity * Final2[i] <= cashbal) {
@@ -2792,10 +2855,10 @@ public class AIPlayerService {
 							Thread.sleep(time);
 						}
 					}
-				} 
-				
-				
-				else if (bs == 0)//sell {
+				}
+
+				else if (bs == 0)// sell
+				{
 
 					// final0
 					if (Final0[i] > Final1[i]) {
@@ -2991,7 +3054,7 @@ public class AIPlayerService {
 							sellqty = selling.nextInt(temp) + 1;
 							company[0] = company[0] - sellqty;
 							cashbal = cashbal + (Final0[i] * sellqty);
-							System.out.println("SELL Final0");						
+							System.out.println("SELL Final0");
 							Thread.sleep(time);
 						}
 
@@ -3388,7 +3451,7 @@ public class AIPlayerService {
 							System.out.println("SELL Final2");
 							Thread.sleep(time);
 						}
-						
+
 					} else if (Final6[i] > Final3[i]) {
 						if (company[3] != 0) {
 							temp = company[3];
@@ -3731,14 +3794,11 @@ public class AIPlayerService {
 					}
 
 				}
-			
+
+			}
+
 		}
+		return cashbal;
 
 	}
-	
 }
-		
-		
-
-
-
