@@ -306,7 +306,7 @@ function loop(){
 				 })
 				 .then(Qty => {
 					 
-					 console.log(Qty);
+					// console.log(Qty);
 					 stock.qty=Qty
 					 
  					 data1.company=this.parentNode.parentNode.cells[0].innerHTML
@@ -318,7 +318,7 @@ function loop(){
  					   ablqty.send(json1);
  					   
   					 
- 					   console.log((ablqty.responseText));
+ 					   //console.log((ablqty.responseText));
  					   
   					if (JSON.parse(ablqty.responseText)>=Qty)
 					 {
@@ -350,23 +350,26 @@ function loop(){
   						
   						
   					//Acc Bal function
-  						var user={};
+  						var user2={};
   						var cBal=document.getElementById("cash").textContent;  
-  						user.id="2";
-  						user.name="mad";
+  						user2.id="2";
+  						user2.name="mad";
   						
-  					   	var cbal=document.getElementById("cash").textContent;
-  					  console.log("sp"+stock.price);
-  					  console.log("sq"+stock.qty);
-  					    var tranval=cbal+(stock.price*stock.qty);
-  					  console.log("tr"+tranval);
-  					  	user.accbal=tranval;
+  					   	var cbal= parseFloat(document.getElementById("cash").textContent);
+						var Mul=(stock.price*stock.qty);
+						console.log("Mul :"+Mul);
+						
+  					    var tranval=parseFloat((stock.price*stock.qty)) + parseFloat(cbal);
+  					  console.log("tranval :"+tranval);
+  					    
+  					  	user2.accbal=parseFloat(tranval);
   					  	
   					  			var xhttpCashUp=new XMLHttpRequest();
   					  			xhttpCashUp.open("POST", "/setCash", false);
   					  			xhttpCashUp.setRequestHeader("Content-type", "application/json");
   						
-  								var jsonchup=JSON.stringify(user);
+  								var jsonchup=JSON.stringify(user2);
+  								xhttpCashUp.send(jsonchup);
   								getCashbal();
   						
   						//end of acc bal
@@ -556,65 +559,62 @@ function loop(){
 
 		</div>
 		<div class="row">
-			
 			<div class="column">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
-					News<span class="colored">Feed</span>
+						News<span class="colored">Feed</span>
 					</h1>
 				</div>
 				<form>
 					<div class="form-group">
-						<textarea id="comment1" class="form-control" rows="10" 
-						cols="70"
-						style="color: white; background-color: transparent;"></textarea>			
+						<textarea id="newsfeed" class="form-control" readonly="readonly"
+							rows="10" cols="70"
+							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
-							function start1(){
-								eventSource=new EventSource("/Newsfeeds");
-								eventSource.onopen=function(){comment1.value+= 'Connected...'+'\n';};
-								eventSource.onmessage=function(message){comment1.value+=message.data+'\n'};
-								eventSource.onerror=function(){comment1.value+='Error Occured...'+'\n'};
-								
+							function start(){
+								eventSource=new EventSource("/Newsfeed");
+								eventSource.onopen=function(){newsfeed.value+= 'Connected...'+'\n';};
+								eventSource.onmessage=function(message){newsfeed.value+=message.data+'\n\n'};
+								eventSource.onerror=function(){newsfeed.value+='Error Occured...'+'\n'};
+								startButton.disabled=true;
 								}										
-						</script>			
+						</script>
 						<script type="text/javascript">
-							start1();
+							//start();
 						</script>
 					</div>
+
 				</form>
-			
-			
-			</div>	
+			</div>
 
 			<div class="column">
 				<div class="col-md-auto">
 					<h1 class="animation-element slide-down">
-					Rumo<span class="colored">urs</span>
+						Rumo<span class="colored">urs</span>
 					</h1>
 				</div>
 				<form>
-					 <div class="form-group">
-						<textarea id="comment" class="form-control" rows="10" 
-						cols="70"
-						style="color: white; background-color: transparent;"></textarea>			
+					<div class="form-group">
+						<textarea id="comment" class="form-control" rows="10" cols="70"
+							style="color: white; background-color: transparent;"></textarea>
 						<script type="text/javascript">
 							function start(){
-								eventSource=new EventSource("/Rumours");
+								eventSource=new EventSource("/sseTest");
 								eventSource.onopen=function(){comment.value+= 'Connected...'+'\n';};
-								eventSource.onmessage=function(message){comment.value+=message.data+'\n'};
+								eventSource.onmessage=function(message){comment.value+=message.data+'\n\n'};
 								eventSource.onerror=function(){comment.value+='Error Occured...'+'\n'};
-								
+								startButton.disabled=true;
 								}										
-						</script>			
+						</script>
 						<script type="text/javascript">
 							start();
 						</script>
 					</div>
 				</form>
-				
+
 			</div>
 
-			
+
 		</div>
 		<div class="row">
 			<table class="table table-striped center">
