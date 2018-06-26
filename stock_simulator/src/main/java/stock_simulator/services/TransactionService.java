@@ -37,5 +37,5 @@ public class TransactionService {
 	{
 		return transactionsRepository.findByCompanyAndPlayer(company, player);
 	}
-
+//trs
 }
